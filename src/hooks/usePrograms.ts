@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
 import { fetchWithFallback } from "@/lib/fetchWithFallback";
 
 export interface Iprogram {
@@ -10,22 +10,33 @@ export interface Iprogram {
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "";
 
-const fetchPrograms = async (): Promise<Iprogram[]> => {
-  const { data, error } = await fetchWithFallback<{ data: Iprogram[] }>(
-    `${BASE_URL}/our-programs`,
-    "/data/our-programs.json"
-  );
-
-  if (error) {
-    throw new Error(error);
-  }
-
-  return data?.data || [];
-};
-
 export const usePrograms = () => {
-  return useQuery({
-    queryKey: ["programs"],
-    queryFn: fetchPrograms,
-  });
+  const [data, setData] = useState<Iprogram[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    const fetchPrograms = async () => {
+      try {
+        const { data: result, error: fetchError } = await fetchWithFallback<{ data: Iprogram[] }>(
+          `${BASE_URL}/our-programs`,
+          "/data/our-programs.json"
+        );
+
+        if (fetchError) {
+          throw new Error(fetchError);
+        }
+
+        setData(result?.data || []);
+      } catch (err) {
+        setError(err instanceof Error ? err : new Error("Unknown error"));
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPrograms();
+  }, []);
+
+  return { data, isLoading, error };
 };

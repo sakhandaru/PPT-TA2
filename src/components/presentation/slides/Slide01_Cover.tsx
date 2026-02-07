@@ -135,16 +135,33 @@ export default function Slide01_Cover() {
                 Pembimbing
               </p>
               <p className="text-sm font-semibold text-zinc-700 dark:text-zinc-200">
-                GUSTINA ALFA TRISNAPRADIKA, M.Kom
+                Gustina Alfa Trisnapradika, M.Kom
               </p>
             </div>
             <div className="border border-zinc-200 dark:border-zinc-800/50 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/30">
-              <p className="text-zinc-500 text-[10px] uppercase tracking-wider mb-1">
-                Penguji
+              <p className="text-zinc-500 text-[10px] uppercase tracking-wider mb-3">
+                Dewan Penguji
               </p>
-              <p className="text-sm font-semibold text-zinc-700 dark:text-zinc-200">
-                NOVITA KURNIA NINGRUM, M. Kom
-              </p>
+              <div className="space-y-3">
+                <div>
+                  <p className="text-[10px] text-zinc-400 mb-0.5">Ketua</p>
+                  <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+                    Fauzi Adi Rafrastara, M.Cs
+                  </p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-zinc-400 mb-0.5">Anggota 1</p>
+                  <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+                    Christy Atika Sari, M.Kom
+                  </p>
+                </div>
+                <div>
+                  <p className="text-[10px] text-zinc-400 mb-0.5">Anggota 2</p>
+                  <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+                    Harun Al Azies, S.Stat., M.Stat.
+                  </p>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

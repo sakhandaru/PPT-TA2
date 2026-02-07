@@ -2,118 +2,113 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, ExternalLink } from "lucide-react";
 
 export default function Slide13_ThankYou() {
   return (
-    <div className="w-full h-full relative flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 to-slate-800 text-white">
-      {/* Background Noise & Gradient Orbs */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay pointer-events-none" />
+    <div className="w-full h-full bg-zinc-50 dark:bg-zinc-950 text-zinc-900 dark:text-white p-12 flex flex-col justify-between">
+      {/* Top Bar */}
+      <div className="flex justify-between items-start border-b border-zinc-200 dark:border-zinc-800 pb-6">
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4">
+            {/* Logo Placeholder */}
+            <div className="relative w-12 h-12 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+              <div className="absolute inset-0 flex items-center justify-center bg-blue-100 text-[10px] text-blue-800 rounded-full">
+                UDINUS
+              </div>
+            </div>
+            <div className="relative w-16 h-8 grayscale hover:grayscale-0 transition-all opacity-80 hover:opacity-100">
+              <div className="absolute inset-0 flex items-center justify-center bg-red-100 text-[10px] text-red-800 rounded">
+                TVKU
+              </div>
+            </div>
+          </div>
+          <div className="h-8 w-[1px] bg-zinc-200 dark:bg-zinc-800"></div>
+          <span className="text-sm font-mono tracking-widest uppercase text-zinc-500">
+            Sidang Akhir Skripsi
+          </span>
+        </div>
+        <div className="text-right">
+          <p className="text-xs text-zinc-500 font-mono">SEMESTER GENAP</p>
+          <p className="text-xs text-zinc-500 font-mono">2026</p>
+        </div>
+      </div>
 
-      <motion.div
-        className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-500/30 rounded-full blur-[120px] mix-blend-screen"
-        animate={{
-          x: [0, 50, 0],
-          y: [0, 30, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[100px] mix-blend-screen"
-        animate={{
-          x: [0, -40, 0],
-          y: [0, -50, 0],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col items-center justify-center relative">
+        <div className="w-full max-w-4xl text-center space-y-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="space-y-6"
+          >
+            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter uppercase font-display">
+              Terima Kasih
+            </h1>
+            <p className="text-xl md:text-2xl text-zinc-500 dark:text-zinc-400 font-light tracking-wide">
+              Mohon Arahan dan Masukan dari Dewan Penguji
+            </p>
+          </motion.div>
 
-      <div className="relative z-10 flex flex-col items-center text-center p-8 max-w-4xl">
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, type: "spring" }}
-        >
-          <h1 className="text-7xl md:text-9xl font-black tracking-tighter mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 drop-shadow-2xl">
-            Terima Kasih
-          </h1>
-        </motion.div>
-
-        <motion.p
-          className="text-xl md:text-2xl text-blue-200/80 font-medium mb-12 max-w-2xl leading-relaxed"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8 }}
-        >
-          Atas perhatian, waktu, dan kesempatan yang telah diberikan dalam sesi
-          ini.
-        </motion.p>
-
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-4 md:gap-6"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-        >
-          <ContactLink
-            icon={<Mail className="w-5 h-5" />}
-            label="email@anda.com"
-            href="mailto:email@anda.com"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="w-full h-px bg-gradient-to-r from-transparent via-zinc-300 dark:via-zinc-700 to-transparent"
           />
-          <ContactLink
-            icon={<Github className="w-5 h-5" />}
-            label="github.com/username"
-            href="https://github.com"
-          />
-          <ContactLink
-            icon={<Linkedin className="w-5 h-5" />}
-            label="linkedin.com/in/username"
-            href="https://linkedin.com"
-          />
-        </motion.div>
 
-        <motion.div
-          className="mt-16 text-sm text-white/20 font-mono"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-        >
-          © 2026 Presentation Deck • Built with Next.js & Framer Motion
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5 }}
+          >
+            <h3 className="text-sm font-mono uppercase tracking-widest text-zinc-400 mb-8">
+              Dewan Penguji
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <ExaminerCard role="Ketua" name="Fauzi Adi Rafrastara, M.Cs" />
+              <ExaminerCard role="Anggota 1" name="Christy Atika Sari, M.Kom" />
+              <ExaminerCard
+                role="Anggota 2"
+                name="Harun Al Azies, S.Stat., M.Stat."
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="flex justify-between items-end border-t border-zinc-200 dark:border-zinc-800 pt-6">
+        <div className="text-7xl font-bold text-zinc-200 dark:text-zinc-900 leading-none select-none -mb-3">
+          13
+        </div>
+        <div className="flex flex-col items-end gap-1">
+          <div className="h-1 w-24 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 1.5, delay: 0.5 }}
+              className="h-full bg-zinc-900 dark:bg-white"
+            />
+          </div>
+          <p className="text-[10px] text-zinc-400 dark:text-zinc-600 uppercase tracking-widest mt-2">
+            Dian Nuswantoro University
+          </p>
+        </div>
       </div>
     </div>
   );
 }
 
-function ContactLink({
-  icon,
-  label,
-  href,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  href: string;
-}) {
+function ExaminerCard({ role, name }: { role: string; name: string }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center gap-3 px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 backdrop-blur-md group"
-    >
-      <span className="text-blue-300 group-hover:text-blue-200 transition-colors">
-        {icon}
+    <div className="flex flex-col items-center p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors group">
+      <span className="text-xs uppercase tracking-widest text-zinc-400 mb-2 font-mono">
+        {role}
       </span>
-      <span className="font-semibold text-white/90 group-hover:text-white">
-        {label}
+      <span className="text-base font-semibold text-zinc-700 dark:text-zinc-200 group-hover:text-black dark:group-hover:text-white transition-colors">
+        {name}
       </span>
-      <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-white/50 opacity-0 group-hover:opacity-100 transition-all -ml-1" />
-    </a>
+    </div>
   );
 }

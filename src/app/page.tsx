@@ -34,9 +34,25 @@ const Page = () => {
     <Slide13_ThankYou key="thankyou" />,
   ];
 
+  const slideTitles = [
+    "Cover",
+    "Latar Belakang",
+    "Rumusan Masalah & Tujuan",
+    "Metodologi",
+    "Arsitektur Sistem",
+    "Pemodelan Sistem",
+    "Refactoring Strategy",
+    "State Management",
+    "UI Optimization",
+    "Performance Evaluation",
+    "User Acceptance Test",
+    "Kesimpulan",
+    "Terima Kasih",
+  ];
+
   return (
     <main>
-      <SlideContainer slides={slides} />
+      <SlideContainer slides={slides} slideTitles={slideTitles} />
     </main>
   );
 };

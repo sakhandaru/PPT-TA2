@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   Users,
   ClipboardCheck,
-  Smile,
   ThumbsUp,
   BarChart3,
   CheckCircle2,

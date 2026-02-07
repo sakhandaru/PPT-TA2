@@ -3,10 +3,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  Database,
-  Zap,
-  RefreshCw,
-  Layout,
   ArrowRightLeft,
   Server,
   MonitorSmartphone,

@@ -56,35 +56,30 @@ export default function Slide04_Methodology() {
 
           <div className="grid gap-4">
             <StageItem
-              number="1"
               title="Planning"
               desc="Identifikasi kebutuhan & user stories."
               icon={<Users className="w-5 h-5" />}
               delay={0.3}
             />
             <StageItem
-              number="2"
               title="Design"
               desc="Simple Design komponen modular."
               icon={<PenTool className="w-5 h-5" />}
               delay={0.4}
             />
             <StageItem
-              number="3"
               title="Coding"
               desc="Implementasi & Continuous Refactoring."
               icon={<Code2 className="w-5 h-5" />}
               delay={0.5}
             />
             <StageItem
-              number="4"
               title="Testing"
               desc="Unit, Integration & Performance Test."
               icon={<TestTube2 className="w-5 h-5" />}
               delay={0.6}
             />
             <StageItem
-              number="5"
               title="Release"
               desc="Deployment ke Vercel & Evaluasi."
               icon={<Rocket className="w-5 h-5" />}
@@ -201,14 +196,12 @@ export default function Slide04_Methodology() {
 }
 
 function StageItem({
-  number,
   title,
   desc,
   icon,
   delay,
   isLast,
 }: {
-  number: string;
   title: string;
   desc: string;
   icon: React.ReactNode;
@@ -242,7 +235,6 @@ function CycleNode({
   color,
   icon,
   label,
-  delay,
 }: {
   angle: number;
   color: string;

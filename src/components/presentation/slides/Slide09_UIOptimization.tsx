@@ -222,17 +222,6 @@ function AtomicDesignVisualizer() {
     return () => clearInterval(interval);
   }, []);
 
-  const variants = {
-    atoms: { opacity: 1, scale: 1, x: 0, y: 0 },
-    molecules: (custom: number) => ({
-      opacity: 1,
-      scale: 0.9,
-      x: custom === 1 ? -20 : custom === 2 ? 20 : 0, // Grouping logic
-      y: 0,
-    }),
-    organisms: { opacity: 1, scale: 0.8, x: 0, y: 0 },
-  };
-
   return (
     <div className="w-full h-full flex flex-col items-center justify-center p-4">
       {/* Visualization Container */}

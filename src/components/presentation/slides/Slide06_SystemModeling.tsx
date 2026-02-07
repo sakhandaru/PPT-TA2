@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   Projector,
   Users,
-  Workflow,
   MessageSquareCode,
   MonitorPlay,
   Calendar,

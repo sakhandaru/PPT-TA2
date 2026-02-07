@@ -2,7 +2,6 @@
 
 import React from "react";
 import { SlideContainer } from "@/components/presentation/SlideContainer";
-import { Slide } from "@/components/presentation/Slide";
 import Slide01_Cover from "@/components/presentation/slides/Slide01_Cover";
 import Slide02_Background from "@/components/presentation/slides/Slide02_Background";
 import Slide03_GoalScope from "@/components/presentation/slides/Slide03_GoalScope";

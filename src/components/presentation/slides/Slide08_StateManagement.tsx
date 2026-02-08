@@ -7,7 +7,6 @@ import {
   Server,
   MonitorSmartphone,
   CheckCircle2,
-  TableProperties,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +14,7 @@ export default function Slide08_StateManagement() {
   return (
     <div className="w-full h-full p-8 md:p-12 flex flex-col overflow-hidden">
       <motion.div
-        className="shrink-0 mb-6"
+        className="shrink-0 mb-4"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1 }}
@@ -35,9 +34,9 @@ export default function Slide08_StateManagement() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 flex-1 min-h-0">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 flex-1 min-h-0">
         {/* Left Column: Technology Details */}
-        <div className="flex flex-col space-y-6 overflow-y-auto pr-2">
+        <div className="flex flex-col space-y-4 overflow-y-auto pr-2">
           {/* React Query Section */}
           <motion.div
             className="bg-card border border-red-200 dark:border-red-900/30 rounded-2xl p-5 shadow-sm"
@@ -106,49 +105,106 @@ export default function Slide08_StateManagement() {
           </motion.div>
         </div>
 
-        {/* Right Column: Visual Placeholders */}
-        <div className="flex flex-col gap-6 h-full">
-          {/* Placeholder: Pola Aliran Data (Gambar 7) */}
+        {/* Right Column: Explanations & Reasons */}
+        <div className="flex flex-col gap-4 h-full overflow-y-auto pr-2">
+          {/* Why React Query? */}
           <motion.div
-            className="flex-[1.2] bg-muted/40 border-2 border-dashed border-muted-foreground/30 rounded-2xl flex flex-col items-center justify-center p-6 relative group overflow-hidden"
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
+            className="bg-card border border-red-200 dark:border-red-900/30 rounded-2xl p-5 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow"
+            initial={{ x: 20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            <div className="absolute top-0 right-0 p-3 opacity-50">
-              <span className="text-[10px] font-mono border px-1.5 py-0.5 rounded bg-background">
-                Fig. 7
-              </span>
+            <div className="absolute top-0 right-0 p-3 opacity-10">
+              <Server className="w-24 h-24 text-red-500" />
             </div>
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5" />
-            <ArrowRightLeft className="w-12 h-12 text-muted-foreground/50 mb-3 group-hover:scale-110 transition-transform duration-500" />
-            <p className="text-center font-semibold text-muted-foreground">
-              [Placeholder Gambar 7]
-            </p>
-            <p className="text-center text-sm text-muted-foreground/70">
-              Pola Aliran Data Berbasis Komponen
-            </p>
+
+            <h3 className="font-bold text-lg text-red-600 dark:text-red-400 mb-3 flex items-center gap-2">
+              <div className="w-1.5 h-6 bg-red-500 rounded-full"></div>
+              Mengapa React Query?
+            </h3>
+
+            <div className="space-y-3">
+              <div>
+                <h4 className="font-semibold text-sm mb-1 text-foreground">
+                  Masalah yang Diselesaikan
+                </h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Managing server state secara manual (dengan{" "}
+                  <code>useEffect</code>) sangat rawan bug: race conditions,
+                  caching yang tidak konsisten, dan boilerplate yang repetitif.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-sm mb-1 text-foreground">
+                  Kelebihan Utama
+                </h4>
+                <ul className="grid grid-cols-1 gap-1.5">
+                  <ReasonItem
+                    title="Automatic Background Refetching"
+                    desc="Data selalu fresh tanpa user perlu refresh halaman manual (SWR strategy)."
+                  />
+                  <ReasonItem
+                    title="Smart Caching & Deduping"
+                    desc="Mencegah request redundant ke server, menghemat bandwidth."
+                  />
+                  <ReasonItem
+                    title="Simplified Async Logic"
+                    desc="Menggantikan ratusan baris kode <code>useEffect</code> & <code>useState</code> menjadi hook deklaratif."
+                  />
+                </ul>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Placeholder: Tabel Perbandingan (Tabel 4) */}
+          {/* Why Zustand? */}
           <motion.div
-            className="flex-1 bg-muted/40 border-2 border-dashed border-muted-foreground/30 rounded-2xl flex flex-col items-center justify-center p-6 relative group overflow-hidden"
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            className="bg-card border border-yellow-200 dark:border-yellow-900/30 rounded-2xl p-5 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow"
+            initial={{ x: 20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
           >
-            <div className="absolute top-0 right-0 p-3 opacity-50">
-              <span className="text-[10px] font-mono border px-1.5 py-0.5 rounded bg-background">
-                Table 4
-              </span>
+            <div className="absolute top-0 right-0 p-3 opacity-10">
+              <MonitorSmartphone className="w-24 h-24 text-yellow-500" />
             </div>
-            <TableProperties className="w-10 h-10 text-muted-foreground/50 mb-3 group-hover:scale-110 transition-transform duration-500" />
-            <p className="text-center font-semibold text-muted-foreground">
-              [Placeholder Tabel 4]
-            </p>
-            <p className="text-center text-sm text-muted-foreground/70">
-              Perbandingan Teknologi Pengelolaan Data
-            </p>
+
+            <h3 className="font-bold text-lg text-yellow-600 dark:text-yellow-400 mb-3 flex items-center gap-2">
+              <div className="w-1.5 h-6 bg-yellow-500 rounded-full"></div>
+              Mengapa Zustand?
+            </h3>
+
+            <div className="space-y-3">
+              <div>
+                <h4 className="font-semibold text-sm mb-1 text-foreground">
+                  Masalah yang Diselesaikan
+                </h4>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Redux memerlukan boilerplate yang besar (store, reducer,
+                  action). Context API sering menyebabkan *unnecessary
+                  re-renders* pada komponen child.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-sm mb-1 text-foreground">
+                  Kelebihan Utama
+                </h4>
+                <ul className="grid grid-cols-1 gap-1.5">
+                  <ReasonItem
+                    title="Minimalist API"
+                    desc="Sangat mudah dipahami. Tanpa provider wrapping yang rumit."
+                  />
+                  <ReasonItem
+                    title="Performance Optimization"
+                    desc="Komponen hanya me-render ulang jika spefisik *slice* state berubah."
+                  />
+                  <ReasonItem
+                    title="Transient Updates"
+                    desc="Update state tanpa re-render (berguna untuk animasi/input frekuensi tinggi)."
+                  />
+                </ul>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -173,6 +229,17 @@ function FeatureItem({
         )}
       >
         {text}
+      </span>
+    </li>
+  );
+}
+
+function ReasonItem({ title, desc }: { title: string; desc: string }) {
+  return (
+    <li className="flex flex-col gap-0.5 p-2 rounded hover:bg-muted/50 transition-colors">
+      <span className="text-xs font-bold text-foreground">{title}</span>
+      <span className="text-[10px] text-muted-foreground leading-tight">
+        {desc}
       </span>
     </li>
   );

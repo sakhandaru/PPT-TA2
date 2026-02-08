@@ -17,9 +17,9 @@ import { cn } from "@/lib/utils";
 
 export default function Slide07_Refactoring() {
   return (
-    <div className="w-full h-full p-8 md:p-12 flex flex-col overflow-hidden">
+    <div className="w-full h-full p-4 md:p-8 flex flex-col overflow-hidden">
       <motion.div
-        className="shrink-0 mb-6"
+        className="shrink-0 mb-4"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1 }}
@@ -44,151 +44,130 @@ export default function Slide07_Refactoring() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 flex-1 min-h-0">
-        {/* Left Column: Interactive Visualizer */}
-        <div className="flex flex-col gap-6 h-full">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 flex-1 min-h-0">
+        {/* Left Column: Visualizers (Span 2 columns) */}
+        <div className="lg:col-span-2 flex flex-col gap-4 h-full">
           {/* Monolith to Modular Animation Container */}
-          <div className="flex-1 bg-muted/20 border border-border rounded-2xl p-6 relative overflow-hidden group">
+          <div className="flex-[0.6] bg-muted/20 border border-border rounded-2xl p-4 relative overflow-hidden group hover:border-blue-500/50 transition-colors">
             <div className="absolute top-4 left-4 z-10">
               <span className="text-xs font-mono bg-background/80 backdrop-blur border px-2 py-1 rounded shadow-sm text-foreground">
-                Hover to Refactor
+                Visualisasi Arsitektur
               </span>
             </div>
 
             <MonolithToModularVisualizer />
-
-            {/* Labels/Legend placed at bottom */}
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-6 text-[10px] text-muted-foreground uppercase tracking-wider font-bold opacity-0 group-hover:opacity-100 transition-opacity delay-300">
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-blue-500"></span> UI
-                Components
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-orange-500"></span>{" "}
-                Logic/Hooks
-              </span>
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-purple-500"></span>{" "}
-                Features
-              </span>
-            </div>
           </div>
 
-          {/* Projrect Hierarchy Placeholder (Gbr 27) */}
+          {/* Project Hierarchy Reveal (Gbr 27) */}
           <motion.div
-            className="flex-[0.8] bg-muted/30 border-2 border-dashed border-muted-foreground/20 rounded-2xl flex flex-col items-center justify-center p-4 relative overflow-hidden"
+            className="flex-[0.4] group relative bg-muted/30 border-2 border-dashed border-muted-foreground/20 rounded-2xl flex flex-col items-center justify-center p-4 overflow-hidden hover:border-emerald-500/50 hover:bg-muted/50 transition-all duration-500"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <div className="absolute top-0 right-0 p-3 opacity-50">
-              <span className="text-[10px] font-mono border px-1.5 py-0.5 rounded bg-background">
-                Fig. 27
-              </span>
-            </div>
-            <div className="flex flex-col items-center text-center z-10 w-full">
-              <LayoutTemplate className="w-8 h-8 text-muted-foreground/40 mb-2" />
+            {/* Initial State Content */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center z-20 group-hover:opacity-0 transition-opacity duration-300">
+              <div className="p-4 bg-background rounded-full shadow-sm mb-3 border">
+                <LayoutTemplate className="w-8 h-8 text-emerald-500" />
+              </div>
               <p className="font-semibold text-sm text-muted-foreground">
-                [Placeholder Gambar 27]
+                Lihat Struktur Project
               </p>
               <div className="flex gap-2 mt-2 text-[10px] font-mono text-muted-foreground/60">
-                <span className="bg-muted px-2 py-1 rounded">/app</span>
-                <span className="bg-muted px-2 py-1 rounded">/components</span>
+                <span className="bg-muted px-2 py-1 rounded">
+                  Hover to Reveal
+                </span>
               </div>
+            </div>
+
+            {/* Revealed Image Content */}
+            <div className="absolute inset-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-background/95 backdrop-blur-sm z-30 flex items-center justify-center">
+              <img
+                src="/struktur.png"
+                alt="Architecture Structure"
+                className="w-full h-full object-contain drop-shadow-md rounded-lg"
+              />
+              <div className="absolute top-2 right-2">
+                <span className="text-[10px] font-mono bg-muted px-1.5 py-0.5 rounded border">
+                  /src structure
+                </span>
+              </div>
+            </div>
+
+            {/* Background Decoration */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none group-hover:opacity-5 transition-opacity">
+              <div className="w-full h-full bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px]"></div>
             </div>
           </motion.div>
         </div>
 
-        {/* Right Column: Explanations */}
-        <div className="flex flex-col justify-center space-y-6 overflow-y-auto pl-2">
-          {/* 1. Restrukturisasi */}
-          <DetailSection
-            title="Restrukturisasi Proyek"
-            icon={<FolderTree className="w-5 h-5 text-blue-500" />}
-            delay={0.5}
-          >
-            <ul className="space-y-2 text-sm text-muted-foreground">
+        {/* Right Column: Explanations (Span 1 column) */}
+        <div className="flex flex-col gap-4 overflow-y-auto pr-2">
+          <div className="p-4 bg-card border rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:border-blue-200 dark:hover:border-blue-800">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600">
+                <FolderTree className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold text-base">Restrukturisasi Proyek</h3>
+            </div>
+            <ul className="space-y-2 text-xs text-muted-foreground ml-1">
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-0.5 text-blue-400 shrink-0" />
+                <ArrowRight className="w-3 h-3 mt-0.5 text-blue-400 shrink-0" />
                 <span>
                   Migrasi ke <strong>Next.js 14 App Router</strong>.
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <ArrowRight className="w-4 h-4 mt-0.5 text-blue-400 shrink-0" />
+                <ArrowRight className="w-3 h-3 mt-0.5 text-blue-400 shrink-0" />
                 <span>Organisasi folder berbasis fitur vs teknis.</span>
               </li>
             </ul>
-          </DetailSection>
+          </div>
 
-          {/* 2. Modularisasi */}
-          <DetailSection
-            title="Modularisasi Komponen"
-            icon={<Blocks className="w-5 h-5 text-indigo-500" />}
-            delay={0.6}
-          >
-            <div className="grid grid-cols-1 gap-3 mt-1">
-              <div className="p-3 bg-red-50/50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/30">
-                <h5 className="text-xs font-bold text-red-600 dark:text-red-400 uppercase mb-1">
+          <div className="p-4 bg-card border rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="p-2 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg text-indigo-600">
+                <Blocks className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold">Modularisasi Komponen</h3>
+            </div>
+
+            <div className="grid grid-cols-1 gap-2 mt-2">
+              <div className="p-2 bg-red-50/50 dark:bg-red-900/10 rounded border border-red-100 dark:border-red-900/30">
+                <h5 className="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase mb-0.5">
                   Old System
                 </h5>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-[10px] text-muted-foreground">
                   Script jQuery global & logic UI tercampur (Hard to Debug).
                 </p>
               </div>
-              <div className="p-3 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-lg border border-emerald-100 dark:border-emerald-900/30">
-                <h5 className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase mb-1">
+              <div className="p-2 bg-emerald-50/50 dark:bg-emerald-900/10 rounded border border-emerald-100 dark:border-emerald-900/30">
+                <h5 className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase mb-0.5">
                   New System
                 </h5>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-[10px] text-muted-foreground">
                   Pemisahan <code>/ui</code>, <code>/features</code>, dan{" "}
                   <code>/hooks</code> (Reusable).
                 </p>
               </div>
             </div>
-          </DetailSection>
+          </div>
 
-          {/* 3. Impact */}
-          <DetailSection
-            title="Dampak Internal"
-            icon={<Trash2 className="w-5 h-5 text-rose-500" />}
-            delay={0.7}
-          >
-            <p className="text-sm text-muted-foreground leading-relaxed">
+          <div className="p-4 bg-card border rounded-xl shadow-sm hover:shadow-md transition-shadow flex-1">
+            <div className="flex items-center gap-3 mb-2">
+              <div className="p-2 bg-rose-100 dark:bg-rose-900/30 rounded-lg text-rose-600">
+                <Trash2 className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold">Dampak Internal</h3>
+            </div>
+            <p className="text-xs text-muted-foreground leading-relaxed">
               Eliminasi <strong>technical debt</strong> signifikan. Kode lebih
               bersih, terprediksi, dan dependensi antar berkas menjadi teratur.
             </p>
-          </DetailSection>
+          </div>
         </div>
       </div>
     </div>
-  );
-}
-
-function DetailSection({
-  title,
-  icon,
-  children,
-  delay,
-}: {
-  title: string;
-  icon: React.ReactNode;
-  children: React.ReactNode;
-  delay: number;
-}) {
-  return (
-    <motion.div
-      className="flex flex-col gap-2"
-      initial={{ x: 20, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ delay }}
-    >
-      <div className="flex items-center gap-3">
-        <div className="p-2 bg-muted rounded-lg shrink-0">{icon}</div>
-        <h3 className="font-bold text-lg">{title}</h3>
-      </div>
-      <div className="pl-12">{children}</div>
-    </motion.div>
   );
 }
 
@@ -254,7 +233,7 @@ function MonolithToModularVisualizer() {
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setIsHovered(!isHovered)}
     >
-      <div className="relative w-full max-w-sm h-64">
+      <div className="relative w-full max-w-sm h-48 md:h-64">
         {/* Background Containers */}
         <div className="absolute inset-0 transition-all duration-500">
           {/* Monolith Container - Fades out on hover */}

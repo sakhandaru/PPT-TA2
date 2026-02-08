@@ -151,6 +151,59 @@ export function SlideContainer({ slides, slideTitles }: SlideContainerProps) {
         </AnimatePresence>
       </div>
 
+      {/* Global Page Number System */}
+      {currentSlide !== slides.length - 1 && (
+        <div
+          className={`absolute z-40 pointer-events-none transition-all duration-500 ${
+            currentSlide === 0
+              ? "bottom-6 left-12 right-12 flex justify-between items-end"
+              : "top-6 right-8 flex flex-col items-end"
+          }`}
+        >
+          {/* Page Number */}
+          <div
+            className={`font-bold text-zinc-200 dark:text-zinc-900 leading-none select-none transition-all duration-500 ${
+              currentSlide === 0
+                ? "text-7xl -mb-3 opacity-50 dark:opacity-80 mix-blend-difference dark:mix-blend-normal"
+                : "text-6xl opacity-50 dark:opacity-80"
+            }`}
+          >
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentSlide}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.3 }}
+                className="block"
+              >
+                {currentSlide + 1 < 10
+                  ? `0${currentSlide + 1}`
+                  : currentSlide + 1}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+
+          {/* University Info (Cover Only) */}
+          {currentSlide === 0 && (
+            <div className="flex flex-col items-end gap-1">
+              <div className="h-1 w-24 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
+                <motion.div
+                  key={currentSlide}
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 1.5, delay: 0.5 }}
+                  className="h-full bg-zinc-900 dark:bg-white"
+                />
+              </div>
+              <p className="text-[10px] text-zinc-400 dark:text-zinc-600 uppercase tracking-widest mt-2 mix-blend-difference dark:mix-blend-normal">
+                Dian Nuswantoro University
+              </p>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* New Navigation Bar */}
       <SlideNavigation
         currentSlide={currentSlide}

@@ -4,18 +4,22 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   GitMerge,
-  PenTool,
-  Code2,
-  TestTube2,
-  Rocket,
+  Cpu,
+  Zap,
+  ShieldCheck,
+  LayoutTemplate,
   RefreshCw,
+  Rocket,
+  Code2,
+  PenTool,
+  TestTube2,
   Users,
 } from "lucide-react";
 
 export default function Slide04_Methodology() {
   return (
     // Added overflow-hidden and adjusted padding for no-scroll
-    <div className="w-full h-full p-8 md:p-12 flex flex-col overflow-hidden">
+    <div className="w-full h-full p-8 md:p-12 flex flex-col overflow-hidden bg-zinc-50 dark:bg-zinc-950">
       <motion.div
         className="shrink-0 mb-8"
         initial={{ y: -20, opacity: 0 }}
@@ -26,65 +30,63 @@ export default function Slide04_Methodology() {
           <div className="bg-purple-100 dark:bg-purple-900/30 p-3 rounded-full">
             <GitMerge className="w-8 h-8 text-purple-600 dark:text-purple-400" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
-            Metodologi Penelitian
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+            Metodologi & Standar Teknologi
           </h2>
         </div>
-        <p className="text-2xl text-muted-foreground ml-20 flex items-center gap-3">
-          Metode:{" "}
-          <span className="font-semibold text-foreground">
+        <p className="text-xl text-zinc-500 ml-20 flex items-center gap-3">
+          Kombinasi{" "}
+          <span className="font-semibold text-zinc-900 dark:text-zinc-100">
             Extreme Programming (XP)
-          </span>
-          <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-base rounded-full font-bold">
-            Iterative & Loop
+          </span>{" "}
+          &{" "}
+          <span className="font-semibold text-purple-600 dark:text-purple-400">
+            Enterprise Grade Stack
           </span>
         </p>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 flex-1 min-h-0 items-center">
-        {/* Left Column: Tahapan Detail - Scaled Up Text */}
+        {/* Left Column: Tech Standards (The "Why") */}
         <div className="flex flex-col justify-center space-y-6 h-full">
           <motion.p
-            className="text-xl text-muted-foreground leading-relaxed"
+            className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Pendekatan iteratif yang berfokus pada kecepatan adaptasi &
-            kualitas.
+            Mengadopsi standar industri modern untuk menjamin{" "}
+            <strong className="text-zinc-900 dark:text-zinc-100">
+              kualitas, performa, dan skalabilitas
+            </strong>{" "}
+            jangka panjang.
           </motion.p>
 
           <div className="grid gap-4">
-            <StageItem
-              title="Planning"
-              desc="Identifikasi kebutuhan & user stories."
-              icon={<Users className="w-5 h-5" />}
+            <StandardItem
+              title="Next.js 14 Framework"
+              desc="Standar SEO & Kecepatan Loading (Google Friendly)."
+              icon={<Cpu className="w-5 h-5" />}
               delay={0.3}
             />
-            <StageItem
-              title="Design"
-              desc="Simple Design komponen modular."
-              icon={<PenTool className="w-5 h-5" />}
+            <StandardItem
+              title="Tailwind CSS System"
+              desc="Pengembangan UI Cepat & Konsisten (Design System)."
+              icon={<LayoutTemplate className="w-5 h-5" />}
               delay={0.4}
             />
-            <StageItem
-              title="Coding"
-              desc="Implementasi & Continuous Refactoring."
-              icon={<Code2 className="w-5 h-5" />}
+            <StandardItem
+              title="Lighthouse Audit"
+              desc="Standar Kualitas Global (Performance & Accessibility)."
+              icon={<ShieldCheck className="w-5 h-5" />}
               delay={0.5}
             />
-            <StageItem
-              title="Testing"
-              desc="Unit, Integration & Performance Test."
-              icon={<TestTube2 className="w-5 h-5" />}
+            <StandardItem
+              title="Extreme Programming"
+              desc="Metode Agile untuk adaptasi perubahan bisnis yang cepat."
+              icon={<Zap className="w-5 h-5" />}
               delay={0.6}
-            />
-            <StageItem
-              title="Release"
-              desc="Deployment ke Vercel & Evaluasi."
-              icon={<Rocket className="w-5 h-5" />}
-              delay={0.7}
-              isLast
+              isHighlight
             />
           </div>
         </div>
@@ -97,11 +99,11 @@ export default function Slide04_Methodology() {
           transition={{ delay: 0.5, type: "spring" }}
         >
           {/* Central XP Core */}
-          <div className="absolute z-20 flex flex-col items-center justify-center bg-background border-4 border-purple-100 dark:border-purple-900/30 rounded-full w-36 h-36 shadow-xl">
+          <div className="absolute z-20 flex flex-col items-center justify-center bg-white dark:bg-zinc-900 border-4 border-purple-100 dark:border-purple-900/30 rounded-full w-36 h-36 shadow-xl">
             <div className="text-3xl font-black text-purple-600 dark:text-purple-400">
               XP
             </div>
-            <div className="text-[10px] uppercase tracking-widest text-muted-foreground mt-1">
+            <div className="text-[10px] uppercase tracking-widest text-zinc-400 mt-1">
               Looping Process
             </div>
             <RefreshCw className="w-6 h-6 text-purple-400 mt-2 animate-spin-slow" />
@@ -111,7 +113,7 @@ export default function Slide04_Methodology() {
           <div className="absolute w-[350px] h-[350px]">
             {/* Dashed Ring */}
             <svg
-              className="absolute inset-0 w-full h-full pointer-events-none opacity-20 dark:opacity-40"
+              className="absolute inset-0 w-full h-full pointer-events-none opacity-20 dark:opacity-40 text-zinc-400"
               viewBox="0 0 100 100"
             >
               <circle
@@ -195,36 +197,38 @@ export default function Slide04_Methodology() {
   );
 }
 
-function StageItem({
+function StandardItem({
   title,
   desc,
   icon,
   delay,
-  isLast,
+  isHighlight,
 }: {
   title: string;
   desc: string;
   icon: React.ReactNode;
   delay: number;
-  isLast?: boolean;
+  isHighlight?: boolean;
 }) {
   return (
     <motion.div
-      className={`flex items-center p-4 rounded-xl border transition-colors ${isLast ? "bg-green-50/50 border-green-200 dark:bg-green-900/10 dark:border-green-900/30" : "bg-card border-border/50 hover:bg-muted/50"}`}
+      className={`flex items-center p-4 rounded-xl border transition-colors ${isHighlight ? "bg-purple-50 border-purple-200 dark:bg-purple-900/10 dark:border-purple-900/30" : "bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700"}`}
       initial={{ x: -20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay }}
     >
       <div
-        className={`flex items-center justify-center w-10 h-10 rounded-lg mr-4 shrink-0 ${isLast ? "bg-green-100 text-green-600 dark:bg-green-900/50 dark:text-green-400" : "bg-secondary text-primary"}`}
+        className={`flex items-center justify-center w-10 h-10 rounded-lg mr-4 shrink-0 ${isHighlight ? "bg-purple-100 text-purple-600 dark:bg-purple-900/50 dark:text-purple-400" : "bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400"}`}
       >
         {icon}
       </div>
       <div className="flex-1 min-w-0">
-        <h4 className="font-bold text-lg text-foreground flex items-center gap-2">
+        <h4 className="font-bold text-lg text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
           {title}
         </h4>
-        <p className="text-base text-muted-foreground truncate">{desc}</p>
+        <p className="text-base text-zinc-500 dark:text-zinc-400 truncate">
+          {desc}
+        </p>
       </div>
     </motion.div>
   );
@@ -235,6 +239,7 @@ function CycleNode({
   color,
   icon,
   label,
+  delay,
 }: {
   angle: number;
   color: string;
@@ -251,7 +256,7 @@ function CycleNode({
       }}
     >
       <div
-        className={`flex flex-col items-center justify-center w-full h-full rounded-full shadow-lg border-4 border-background ${color} text-white`}
+        className={`flex flex-col items-center justify-center w-full h-full rounded-full shadow-lg border-4 border-white dark:border-zinc-950 ${color} text-white`}
       >
         {icon}
         <span className="text-[10px] font-bold mt-1 uppercase tracking-wider">

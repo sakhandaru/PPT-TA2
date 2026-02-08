@@ -82,13 +82,13 @@ export default function Slide12_Conclusion() {
                 </div>
               </ConclusionItem>
               <ConclusionItem delay={0.6}>
-                Sistem kini <span className="font-semibold">Modular</span>,{" "}
-                <span className="font-semibold">Maintainable</span>, dan bebas
-                dari{" "}
-                <span className="font-semibold text-red-500/80">
-                  jQuery technical debt
-                </span>
-                .
+                Sistem kini <span className="font-semibold">Sustainable</span>,{" "}
+                <span className="font-semibold">Efisiensi Tinggi</span>, dan
+                siap untuk{" "}
+                <span className="font-semibold text-emerald-600">
+                  Scale Up Bisnis
+                </span>{" "}
+                di masa depan.
               </ConclusionItem>
             </ul>
           </motion.div>

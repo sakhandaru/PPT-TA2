@@ -11,6 +11,9 @@ import {
   PackageOpen,
   Component,
   Box,
+  FileCode,
+  Settings,
+  Layout,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -132,27 +135,20 @@ export default function Slide09_UIOptimization() {
             <AtomicDesignVisualizer />
           </div>
 
-          {/* Placeholder: Tailwind Pipeline (Gambar 10) */}
+          {/* Tailwind Pipeline Visualizer (Gambar 10 Replacement) */}
           <motion.div
-            className="flex-[0.8] bg-muted/30 border-2 border-dashed border-muted-foreground/20 rounded-2xl flex flex-col items-center justify-center p-4 relative overflow-hidden"
+            className="flex-[0.8] bg-muted/20 border border-border rounded-2xl flex flex-col items-center justify-center p-4 relative overflow-hidden"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <div className="absolute top-0 right-0 p-3 opacity-50">
+            <div className="absolute top-0 right-0 p-3 opacity-50 z-20">
               <span className="text-[10px] font-mono border px-1.5 py-0.5 rounded bg-background">
                 Fig. 10
               </span>
             </div>
-            <div className="flex flex-col items-center text-center z-10 w-full">
-              <Palette className="w-8 h-8 text-cyan-400/60 mb-2" />
-              <p className="font-semibold text-sm text-muted-foreground">
-                [Placeholder Gambar 10]
-              </p>
-              <p className="text-[10px] text-muted-foreground/70 uppercase tracking-wider mt-1">
-                Tailwind CSS Pipeline Diagram
-              </p>
-            </div>
+
+            <TailwindPipelineVisualizer />
           </motion.div>
         </div>
       </div>
@@ -349,6 +345,123 @@ function AtomicDesignVisualizer() {
         <StepDot active={step === 2} label="Organisms" color="bg-emerald-500" />
       </div>
     </div>
+  );
+}
+
+function TailwindPipelineVisualizer() {
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center p-4">
+      <div className="mb-6 w-full text-center">
+        <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground/80 border-b border-border/50 pb-2 inline-block px-4">
+          Tailwind CSS Processing Pipeline
+        </h4>
+      </div>
+
+      <div className="w-full max-w-md flex items-center justify-between relative">
+        {/* Step 1: Config */}
+        <PipelineNode
+          icon={<Settings className="w-4 h-4 text-cyan-500" />}
+          label="Config"
+          subLabel="tailwind.config.js"
+          color="border-cyan-200 bg-cyan-50 dark:border-cyan-800 dark:bg-cyan-900/20"
+          delay={0}
+        />
+
+        {/* Arrow 1 */}
+        <PipelineConnector delay={0.5} />
+
+        {/* Step 2: Build */}
+        <PipelineNode
+          icon={<Zap className="w-4 h-4 text-pink-500" />}
+          label="Build"
+          subLabel="PostCSS"
+          color="border-pink-200 bg-pink-50 dark:border-pink-800 dark:bg-pink-900/20"
+          delay={1}
+        />
+
+        {/* Arrow 2 */}
+        <PipelineConnector delay={1.5} />
+
+        {/* Step 3: Output */}
+        <PipelineNode
+          icon={<FileCode className="w-4 h-4 text-emerald-500" />}
+          label="Output"
+          subLabel="Optimized CSS"
+          color="border-emerald-200 bg-emerald-50 dark:border-emerald-800 dark:bg-emerald-900/20"
+          delay={2}
+        />
+
+        {/* Arrow 3 */}
+        <PipelineConnector delay={2.5} />
+
+        {/* Step 4: Next.js */}
+        <PipelineNode
+          icon={<Layout className="w-4 h-4 text-indigo-500" />}
+          label="Next.js"
+          subLabel="Pages & Layouts"
+          color="border-indigo-200 bg-indigo-50 dark:border-indigo-800 dark:bg-indigo-900/20"
+          delay={3}
+        />
+      </div>
+
+      <div className="w-full max-w-md mt-6 px-4">
+        <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-gradient-to-r from-cyan-500 via-pink-500 to-indigo-500"
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+        <div className="flex justify-between mt-2 text-[9px] text-muted-foreground font-mono uppercase tracking-wider">
+          <span>Scan Sources</span>
+          <span>Generate Classes</span>
+          <span>Purge Unused</span>
+          <span>Inject</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PipelineNode({ icon, label, subLabel, color, delay }: any) {
+  return (
+    <motion.div
+      className={cn(
+        "flex flex-col items-center justify-center w-20 h-20 rounded-xl border-2 shadow-sm relative z-10",
+        color,
+      )}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ delay, duration: 0.5 }}
+      whileHover={{ scale: 1.05 }}
+    >
+      <div className="mb-1 p-1.5 bg-background rounded-full shadow-sm">
+        {icon}
+      </div>
+      <span className="text-[10px] font-bold text-foreground">{label}</span>
+      <span className="text-[8px] text-muted-foreground text-center leading-tight px-1">
+        {subLabel}
+      </span>
+    </motion.div>
+  );
+}
+
+function PipelineConnector({ delay }: { delay: number }) {
+  return (
+    <motion.div
+      className="flex-1 h-0.5 bg-border mx-2 relative overflow-hidden"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay, duration: 0.5 }}
+    >
+      <motion.div
+        className="absolute inset-0 bg-foreground/50"
+        initial={{ x: "-100%" }}
+        animate={{ x: "100%" }}
+        transition={{ repeat: Infinity, duration: 1.5, ease: "linear", delay }}
+      />
+    </motion.div>
   );
 }
 

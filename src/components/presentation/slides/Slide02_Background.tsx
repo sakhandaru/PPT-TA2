@@ -14,9 +14,7 @@ import {
 } from "lucide-react";
 
 export default function Slide02_Background() {
-  const [activeFeature, setActiveFeature] = useState<
-    "default" | "arch" | "state" | "performance"
-  >("default");
+  const [activeFeature, setActiveFeature] = useState<string>("default");
 
   return (
     <div className="w-full h-full p-6 md:p-8 flex flex-col space-y-6 overflow-hidden bg-zinc-50 dark:bg-zinc-950">

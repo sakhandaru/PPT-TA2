@@ -57,26 +57,26 @@ export default function Slide12_Conclusion() {
               <ConclusionItem delay={0.4}>
                 Skor Performa melonjak{" "}
                 <span className="font-bold text-emerald-600 dark:text-emerald-400">
-                  104.4%
+                  +50%
                 </span>{" "}
-                (45 <ArrowUpRight className="inline w-4 h-4" /> 92).
+                (62 <ArrowUpRight className="inline w-4 h-4" /> 93).
               </ConclusionItem>
               <ConclusionItem delay={0.5}>
                 Perbaikan Core Web Vitals:
                 <div className="grid grid-cols-3 gap-2 mt-2">
                   <MetricBadge
                     label="LCP"
-                    val="61.9%"
+                    val="93.8%"
                     color="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300"
                   />
                   <MetricBadge
-                    label="FID"
-                    val="75.0%"
+                    label="TBT"
+                    val="62.5%"
                     color="bg-indigo-100 text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300"
                   />
                   <MetricBadge
                     label="CLS"
-                    val="80.0%"
+                    val="98.4%"
                     color="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300"
                   />
                 </div>

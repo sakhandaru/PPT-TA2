@@ -55,13 +55,13 @@ export default function Slide02_Background() {
               Kondisi Eksisting
             </h3>
             <ul className="space-y-2">
-              <li className="flex items-center text-zinc-600 dark:text-zinc-400 text-sm">
-                <span className="w-1.5 h-1.5 bg-zinc-300 rounded-full mr-3 shrink-0" />
+              <li className="flex items-center text-zinc-600 dark:text-zinc-400 text-base">
+                <span className="w-2 h-2 bg-zinc-300 rounded-full mr-3 shrink-0" />
                 Dominasi jQuery dalam ekosistem React
               </li>
-              <li className="flex items-center text-zinc-600 dark:text-zinc-400 text-sm">
-                <span className="w-1.5 h-1.5 bg-zinc-300 rounded-full mr-3 shrink-0" />
-                Struktur Monolitik (Tight Coupling)
+              <li className="flex items-center text-zinc-600 dark:text-zinc-400 text-base">
+                <span className="w-2 h-2 bg-zinc-300 rounded-full mr-3 shrink-0" />
+                Struktur Monolitik yang Kaku
               </li>
             </ul>
           </motion.div>
@@ -79,32 +79,6 @@ export default function Slide02_Background() {
             </h3>
 
             <div className="space-y-3 flex-1">
-              {/* Item: Architecture */}
-              <div
-                className={`p-4 rounded-xl border transition-all duration-300 cursor-default group ${activeFeature === "arch" ? "bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800" : "bg-zinc-50 border-transparent dark:bg-zinc-800/50 hover:border-zinc-200"}`}
-                onMouseEnter={() => setActiveFeature("arch")}
-                onMouseLeave={() => setActiveFeature("default")}
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <strong
-                    className={`block ${activeFeature === "arch" ? "text-blue-700 dark:text-blue-300" : "text-zinc-700 dark:text-zinc-300"}`}
-                  >
-                    Ketergantungan Tinggi (High Maintenance Cost)
-                  </strong>
-                  <Layers
-                    className={`w-4 h-4 ${activeFeature === "arch" ? "text-blue-500" : "text-zinc-400"}`}
-                  />
-                </div>
-                <p className="text-xs text-zinc-500 leading-relaxed">
-                  Struktur lama yang kaku (Tight Coupling).
-                  <br />
-                  <span className="font-semibold text-red-600 dark:text-red-400">
-                    Risiko: Biaya perbaikan mahal & lambat karena takut merusak
-                    fitur lain.
-                  </span>
-                </p>
-              </div>
-
               {/* Item: Performance (Key Item) */}
               <div
                 className={`p-4 rounded-xl border transition-all duration-300 cursor-pointer group relative overflow-hidden ${activeFeature === "performance" ? "bg-orange-50 border-orange-200 dark:bg-orange-900/20 dark:border-orange-800 ring-1 ring-orange-200 dark:ring-orange-700" : "bg-zinc-50 border-transparent dark:bg-zinc-800/50 hover:bg-zinc-100"}`}
@@ -121,12 +95,11 @@ export default function Slide02_Background() {
                     className={`w-4 h-4 ${activeFeature === "performance" ? "text-orange-500" : "text-zinc-400"}`}
                   />
                 </div>
-                <p className="text-xs text-zinc-500 relative z-10 leading-relaxed">
-                  Load time sangat lambat.
+                <p className="text-sm text-zinc-500 relative z-10 leading-relaxed">
+                  Sangat Kritis (&gt; 3 detik).
                   <br />
                   <span className="font-semibold text-orange-600 dark:text-orange-400">
-                    Dampak: Pengunjung meninggalkan situs sebelum konten tampil
-                    (Lost Opportunity).
+                    Potensi kehilangan 53% audiens (Lost Opportunity).
                   </span>
                 </p>
                 {activeFeature === "performance" && (
@@ -135,6 +108,31 @@ export default function Slide02_Background() {
                     className="absolute inset-0 bg-orange-100/50 dark:bg-orange-900/10 z-0"
                   />
                 )}
+              </div>
+
+              {/* Item: Architecture */}
+              <div
+                className={`p-4 rounded-xl border transition-all duration-300 cursor-default group ${activeFeature === "arch" ? "bg-blue-50 border-blue-200 dark:bg-blue-900/20 dark:border-blue-800" : "bg-zinc-50 border-transparent dark:bg-zinc-800/50 hover:border-zinc-200"}`}
+                onMouseEnter={() => setActiveFeature("arch")}
+                onMouseLeave={() => setActiveFeature("default")}
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <strong
+                    className={`block ${activeFeature === "arch" ? "text-blue-700 dark:text-blue-300" : "text-zinc-700 dark:text-zinc-300"}`}
+                  >
+                    Tight Coupling (Ketergantungan Tinggi)
+                  </strong>
+                  <Layers
+                    className={`w-4 h-4 ${activeFeature === "arch" ? "text-blue-500" : "text-zinc-400"}`}
+                  />
+                </div>
+                <p className="text-sm text-zinc-500 leading-relaxed">
+                  High Maintenance Cost.
+                  <br />
+                  <span className="font-semibold text-red-600 dark:text-red-400">
+                    Perubahan kecil berisiko merusak fitur lain.
+                  </span>
+                </p>
               </div>
 
               {/* Item: State */}
@@ -147,18 +145,18 @@ export default function Slide02_Background() {
                   <strong
                     className={`block ${activeFeature === "state" ? "text-purple-700 dark:text-purple-300" : "text-zinc-700 dark:text-zinc-300"}`}
                   >
-                    Alur Data Rumit (Risiko Inkonsistensi)
+                    Prop Drilling & Alur Data Rumit
                   </strong>
                   <Database
                     className={`w-4 h-4 ${activeFeature === "state" ? "text-purple-500" : "text-zinc-400"}`}
                   />
                 </div>
-                <p className="text-xs text-zinc-500 leading-relaxed">
+                <p className="text-sm text-zinc-500 leading-relaxed">
                   Manajemen state tidak terpusat (Prop Drilling).
                   <br />
                   <span className="font-semibold text-purple-600 dark:text-purple-400">
-                    Risiko: Data sering tidak sinkron & sulit dilacak sumber
-                    errornya.
+                    Risiko Inkonsistensi Data & UX terganggu
+                    (Janky/Patah-patah).
                   </span>
                 </p>
               </div>
@@ -175,7 +173,7 @@ export default function Slide02_Background() {
             transition={{ delay: 0.4 }}
           >
             <AnimatePresence mode="wait">
-              {activeFeature === "performance" ? (
+              {activeFeature === "performance" && (
                 /* EVIDENCE VIEW */
                 <motion.div
                   key="evidence"
@@ -204,7 +202,35 @@ export default function Slide02_Background() {
                     refaktorisasi.
                   </p>
                 </motion.div>
-              ) : (
+              )}
+
+              {activeFeature === "arch" && (
+                <motion.div
+                  key="arch"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute inset-0 bg-white dark:bg-zinc-900"
+                >
+                  <DependencyGraph />
+                </motion.div>
+              )}
+
+              {activeFeature === "state" && (
+                <motion.div
+                  key="state"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute inset-0 bg-white dark:bg-zinc-900"
+                >
+                  <PropDrillingViz />
+                </motion.div>
+              )}
+
+              {activeFeature === "default" && (
                 /* DEFAULT SUMMARY TABLE VIEW */
                 <motion.div
                   key="summary"
@@ -237,49 +263,7 @@ export default function Slide02_Background() {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
-                        <tr
-                          className={
-                            activeFeature === "arch"
-                              ? "bg-blue-50/50 dark:bg-blue-900/10"
-                              : ""
-                          }
-                        >
-                          <td className="p-4 font-medium text-zinc-700 dark:text-zinc-300">
-                            Architecture
-                          </td>
-                          <td className="p-4 text-zinc-500">Tight Coupling</td>
-                          <td className="p-4 text-zinc-600 dark:text-zinc-400">
-                            <strong className="block text-red-600 dark:text-red-400 text-xs mb-0.5">
-                              High Maintenance Cost
-                            </strong>
-                            Setiap perubahan kecil berisiko merusak fitur lain.
-                          </td>
-                        </tr>
-                        <tr
-                          className={
-                            activeFeature === "state"
-                              ? "bg-purple-50/50 dark:bg-purple-900/10"
-                              : ""
-                          }
-                        >
-                          <td className="p-4 font-medium text-zinc-700 dark:text-zinc-300">
-                            State Mgmt
-                          </td>
-                          <td className="p-4 text-zinc-500">Prop Drilling</td>
-                          <td className="p-4 text-zinc-600 dark:text-zinc-400">
-                            <strong className="block text-orange-600 dark:text-orange-400 text-xs mb-0.5">
-                              Data Inconsistency Risk
-                            </strong>
-                            Sulit melacak alur data, rawan error saat update.
-                          </td>
-                        </tr>
-                        <tr
-                          className={
-                            activeFeature === "performance"
-                              ? "bg-orange-50/50 dark:bg-orange-900/10"
-                              : ""
-                          }
-                        >
+                        <tr>
                           <td className="p-4 font-medium text-zinc-700 dark:text-zinc-300">
                             Performance
                           </td>
@@ -291,6 +275,30 @@ export default function Slide02_Background() {
                               Lost Opportunity (Audiens Kabur)
                             </strong>
                             Pengunjung meninggalkan situs sebelum konten tampil.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="p-4 font-medium text-zinc-700 dark:text-zinc-300">
+                            Architecture
+                          </td>
+                          <td className="p-4 text-zinc-500">Tight Coupling</td>
+                          <td className="p-4 text-zinc-600 dark:text-zinc-400">
+                            <strong className="block text-red-600 dark:text-red-400 text-xs mb-0.5">
+                              High Maintenance Cost
+                            </strong>
+                            Setiap perubahan kecil berisiko merusak fitur lain.
+                          </td>
+                        </tr>
+                        <tr>
+                          <td className="p-4 font-medium text-zinc-700 dark:text-zinc-300">
+                            State Mgmt
+                          </td>
+                          <td className="p-4 text-zinc-500">Prop Drilling</td>
+                          <td className="p-4 text-zinc-600 dark:text-zinc-400">
+                            <strong className="block text-orange-600 dark:text-orange-400 text-xs mb-0.5">
+                              Data Inconsistency Risk
+                            </strong>
+                            Sulit melacak alur data, rawan error saat update.
                           </td>
                         </tr>
                         <tr>
@@ -336,6 +344,190 @@ export default function Slide02_Background() {
           </motion.div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function DependencyGraph() {
+  const nodes = [
+    { id: 1, x: 50, y: 50, color: "bg-red-500" },
+    { id: 2, x: 30, y: 30, color: "bg-zinc-400" },
+    { id: 3, x: 70, y: 30, color: "bg-zinc-400" },
+    { id: 4, x: 20, y: 70, color: "bg-zinc-400" },
+    { id: 5, x: 80, y: 70, color: "bg-zinc-400" },
+    { id: 6, x: 50, y: 90, color: "bg-zinc-400" },
+  ];
+
+  const edges = [
+    { from: 1, to: 2 },
+    { from: 1, to: 3 },
+    { from: 1, to: 4 },
+    { from: 1, to: 5 },
+    { from: 1, to: 6 },
+    { from: 2, to: 3 },
+    { from: 4, to: 5 },
+    { from: 2, to: 4 },
+    { from: 3, to: 5 },
+  ];
+
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center relative p-8">
+      <div className="absolute inset-0 bg-blue-50/50 dark:bg-blue-900/5 rounded-xl" />
+      <div className="relative w-64 h-64">
+        {/* Edges */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none">
+          {edges.map((edge, i) => {
+            const n1 = nodes.find((n) => n.id === edge.from)!;
+            const n2 = nodes.find((n) => n.id === edge.to)!;
+            return (
+              <motion.line
+                key={i}
+                x1={`${n1.x}%`}
+                y1={`${n1.y}%`}
+                x2={`${n2.x}%`}
+                y2={`${n2.y}%`}
+                stroke="currentColor"
+                strokeWidth="2"
+                className="text-zinc-300 dark:text-zinc-600"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 1, delay: i * 0.1 }}
+              />
+            );
+          })}
+        </svg>
+
+        {/* Nodes */}
+        {nodes.map((node) => (
+          <motion.div
+            key={node.id}
+            className={`absolute w-8 h-8 rounded-full border-2 border-white dark:border-zinc-800 shadow-md flex items-center justify-center z-10 ${node.id === 1 ? "bg-red-500" : "bg-zinc-400 dark:bg-zinc-600"}`}
+            style={{
+              left: `${node.x}%`,
+              top: `${node.y}%`,
+              x: "-50%",
+              y: "-50%",
+            }}
+            animate={
+              node.id === 1
+                ? { scale: [1, 1.2, 1] }
+                : {
+                    x: ["-50%", "-55%", "-50%", "-45%", "-50%"],
+                    y: ["-50%", "-55%", "-50%", "-45%", "-50%"],
+                  }
+            }
+            transition={{
+              duration: node.id === 1 ? 2 : 0.5,
+              repeat: Infinity,
+              repeatDelay: node.id === 1 ? 1 : Math.random() * 2,
+              delay: node.id === 1 ? 0 : 0.5,
+            }}
+          >
+            {node.id === 1 && <AlertTriangle className="w-4 h-4 text-white" />}
+          </motion.div>
+        ))}
+
+        {/* Ripple Effect for Center Node */}
+        <motion.div
+          className="absolute w-8 h-8 rounded-full bg-red-500/30 z-0"
+          style={{ left: "50%", top: "50%", x: "-50%", y: "-50%" }}
+          animate={{ scale: [1, 3], opacity: [0.5, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+      </div>
+      <p className="mt-8 text-center text-sm font-medium text-zinc-500 max-w-xs">
+        Visualisasi{" "}
+        <span className="text-red-600 dark:text-red-400">Tight Coupling</span>:
+        Satu error di modul inti (tengah) menyebabkan kegagalan cascade ke modul
+        lain.
+      </p>
+    </div>
+  );
+}
+
+function PropDrillingViz() {
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center relative p-4">
+      <div className="absolute inset-0 bg-purple-50/50 dark:bg-purple-900/5 rounded-xl" />
+
+      <div className="flex flex-col items-center gap-4 relative z-10">
+        {/* Level 1: App */}
+        <div className="w-32 p-2 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg shadow-sm text-center">
+          <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300">
+            App (State)
+          </span>
+        </div>
+
+        {/* Connection */}
+        <div className="h-6 w-0.5 bg-zinc-300 dark:bg-zinc-700 relative overflow-hidden">
+          <motion.div
+            className="w-full h-1/2 bg-purple-500 absolute top-0"
+            animate={{ y: ["-100%", "200%"] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+
+        {/* Level 2: Layout */}
+        <div className="w-32 p-2 bg-zinc-50 dark:bg-zinc-800/50 border border-dashed border-zinc-300 dark:border-zinc-700 rounded-lg text-center opacity-70">
+          <span className="text-xs text-zinc-500">Layout</span>
+        </div>
+
+        {/* Connection */}
+        <div className="h-6 w-0.5 bg-zinc-300 dark:bg-zinc-700 relative overflow-hidden">
+          <motion.div
+            className="w-full h-1/2 bg-purple-500 absolute top-0"
+            animate={{ y: ["-100%", "200%"] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "linear",
+              delay: 0.5,
+            }}
+          />
+        </div>
+
+        {/* Level 3: Page */}
+        <div className="w-32 p-2 bg-zinc-50 dark:bg-zinc-800/50 border border-dashed border-zinc-300 dark:border-zinc-700 rounded-lg text-center opacity-70">
+          <span className="text-xs text-zinc-500">Page Container</span>
+        </div>
+
+        {/* Connection */}
+        <div className="h-6 w-0.5 bg-zinc-300 dark:bg-zinc-700 relative overflow-hidden">
+          <motion.div
+            className="w-full h-1/2 bg-purple-500 absolute top-0"
+            animate={{ y: ["-100%", "200%"] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "linear",
+              delay: 1,
+            }}
+          />
+        </div>
+
+        {/* Level 4: Component (Target) */}
+        <div className="w-32 p-2 bg-purple-100 dark:bg-purple-900/30 border border-purple-200 dark:border-purple-700 rounded-lg text-center shadow-sm">
+          <span className="text-xs font-bold text-purple-700 dark:text-purple-300">
+            Target Component
+          </span>
+        </div>
+      </div>
+
+      {/* Animated Data Packet - Overlay */}
+      <motion.div
+        className="absolute w-4 h-4 rounded-full bg-purple-600 shadow-lg z-20 border-2 border-white"
+        animate={{ y: [0, 160], opacity: [1, 1, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+        style={{ top: "60px" }} // Adjust start position
+      />
+
+      <p className="mt-8 text-center text-sm font-medium text-zinc-500 max-w-xs">
+        Visualisasi{" "}
+        <span className="text-purple-600 dark:text-purple-400">
+          Prop Drilling
+        </span>
+        : Data harus melewati banyak layer komponen yang tidak membutuhkannya.
+      </p>
     </div>
   );
 }

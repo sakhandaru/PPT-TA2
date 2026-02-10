@@ -53,10 +53,10 @@ export default function Slide11_UAT() {
               <li className="flex items-start gap-3">
                 <Users className="w-4 h-4 text-muted-foreground mt-1" />
                 <div>
-                  <span className="font-semibold text-sm">
-                    Responden: 15 Orang
+                  <span className="font-semibold text-base">
+                    Responden: 16 Orang
                   </span>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     Tim redaksi & pengguna umum.
                   </p>
                 </div>
@@ -64,10 +64,10 @@ export default function Slide11_UAT() {
               <li className="flex items-start gap-3">
                 <BarChart3 className="w-4 h-4 text-muted-foreground mt-1" />
                 <div>
-                  <span className="font-semibold text-sm">
+                  <span className="font-semibold text-base">
                     Skala Likert (1-4)
                   </span>
-                  <p className="text-xs text-muted-foreground">
+                  <p className="text-sm text-muted-foreground">
                     1: Sangat Tidak Setuju — 4: Sangat Setuju.
                   </p>
                 </div>
@@ -76,34 +76,6 @@ export default function Slide11_UAT() {
           </motion.div>
 
           {/* Key Aspects Scores */}
-          <div className="space-y-3">
-            <h3 className="font-bold text-lg flex items-center gap-2">
-              <Star className="w-5 h-5 text-yellow-500" />
-              Aspek Penilaian Utama
-            </h3>
-
-            <ScoreBar
-              label="Antarmuka & Navigasi"
-              score={3.2}
-              max={4}
-              delay={0.3}
-              color="bg-indigo-500"
-            />
-            <ScoreBar
-              label="Performa & Responsivitas"
-              score={3.2}
-              max={4}
-              delay={0.4}
-              color="bg-cyan-500"
-            />
-            <ScoreBar
-              label="Fungsionalitas Sistem"
-              score={3.2}
-              max={4}
-              delay={0.5}
-              color="bg-emerald-500"
-            />
-          </div>
 
           <motion.div
             className="p-4 bg-blue-50/50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-900/30 rounded-lg flex gap-3 items-center"
@@ -112,7 +84,7 @@ export default function Slide11_UAT() {
             transition={{ delay: 0.6 }}
           >
             <CheckCircle2 className="w-6 h-6 text-blue-600 dark:text-blue-400 shrink-0" />
-            <p className="text-sm text-blue-800 dark:text-blue-300 font-medium">
+            <p className="text-base text-blue-800 dark:text-blue-300 font-medium">
               Kesimpulan: Mayoritas pengguna memberikan respon positif dan
               sistem dinilai layak digunakan.
             </p>

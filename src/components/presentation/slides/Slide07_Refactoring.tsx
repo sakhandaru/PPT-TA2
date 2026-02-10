@@ -44,11 +44,11 @@ export default function Slide07_Refactoring() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 flex-1 min-h-0">
-        {/* Left Column: Visualizers (Span 2 columns) */}
-        <div className="lg:col-span-2 flex flex-col gap-4 h-full">
+      <div className="flex flex-col gap-4 md:gap-6 flex-1 min-h-0">
+        {/* Top Row: Visualizers (Side by Side) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 min-h-0">
           {/* Monolith to Modular Animation Container */}
-          <div className="flex-[0.6] bg-muted/20 border border-border rounded-2xl p-4 relative overflow-hidden group hover:border-blue-500/50 transition-colors">
+          <div className="bg-muted/20 border border-border rounded-2xl p-4 relative overflow-hidden group hover:border-blue-500/50 transition-colors h-full">
             <div className="absolute top-4 left-4 z-10">
               <span className="text-xs font-mono bg-background/80 backdrop-blur border px-2 py-1 rounded shadow-sm text-foreground">
                 Visualisasi Arsitektur
@@ -60,7 +60,7 @@ export default function Slide07_Refactoring() {
 
           {/* Project Hierarchy Reveal (Gbr 27) */}
           <motion.div
-            className="flex-[0.4] group relative bg-muted/30 border-2 border-dashed border-muted-foreground/20 rounded-2xl flex flex-col items-center justify-center p-4 overflow-hidden hover:border-emerald-500/50 hover:bg-muted/50 transition-all duration-500"
+            className="group relative bg-muted/30 border-2 border-dashed border-muted-foreground/20 rounded-2xl flex flex-col items-center justify-center p-4 overflow-hidden hover:border-emerald-500/50 hover:bg-muted/50 transition-all duration-500 h-full"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -101,8 +101,8 @@ export default function Slide07_Refactoring() {
           </motion.div>
         </div>
 
-        {/* Right Column: Explanations (Span 1 column) */}
-        <div className="flex flex-col gap-4 overflow-y-auto pr-2">
+        {/* Bottom Row: Explanations (Horizontal Grid) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 shrink-0">
           <div className="p-4 bg-card border rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:border-blue-200 dark:hover:border-blue-800">
             <div className="flex items-center gap-3 mb-3">
               <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg text-blue-600">

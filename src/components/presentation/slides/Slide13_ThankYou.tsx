@@ -73,12 +73,16 @@ export default function Slide13_ThankYou() {
             <h3 className="text-sm font-mono uppercase tracking-widest text-zinc-400 mb-8">
               Dewan Penguji
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <ExaminerCard role="Ketua" name="Fauzi Adi Rafrastara, M.Cs" />
               <ExaminerCard role="Anggota 1" name="Christy Atika Sari, M.Kom" />
               <ExaminerCard
                 role="Anggota 2"
                 name="Harun Al Azies, S.Stat., M.Stat."
+              />
+              <ExaminerCard
+                role="Pembimbing"
+                name="Gustina Alfa Trisnapradika, M.Kom"
               />
             </div>
           </motion.div>

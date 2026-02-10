@@ -35,81 +35,24 @@ export default function Slide08_StateManagement() {
       </motion.div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 flex-1 min-h-0">
-        {/* Left Column: Technology Details */}
-        <div className="flex flex-col space-y-4 overflow-y-auto pr-2">
-          {/* React Query Section */}
-          <motion.div
-            className="bg-card border border-red-200 dark:border-red-900/30 rounded-2xl p-5 shadow-sm"
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <div className="flex items-center gap-3 mb-3 border-b border-red-100 dark:border-red-900/30 pb-3">
-              <div className="p-2 bg-red-100 dark:bg-red-900/50 rounded-lg text-red-600 dark:text-red-400">
-                <Server className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-bold text-lg text-red-700 dark:text-red-400">
-                  Server State (React Query)
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  Synchronized Data
-                </p>
-              </div>
-            </div>
-            <ul className="space-y-3">
-              <FeatureItem text="Sinkronisasi data API secara deklaratif." />
-              <FeatureItem text="Caching otomatis & Background updates." />
-              <FeatureItem text="Mengurangi beban network request." />
-            </ul>
-          </motion.div>
+        {/* Left Column: State Management Visual Configuration */}
+        <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 relative overflow-hidden border border-slate-200 dark:border-slate-800">
+          <div className="absolute inset-0 bg-grid-slate-200/50 dark:bg-grid-slate-800/20 [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none" />
 
-          {/* Zustand Section */}
-          <motion.div
-            className="bg-card border border-yellow-200 dark:border-yellow-900/30 rounded-2xl p-5 shadow-sm"
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            <div className="flex items-center gap-3 mb-3 border-b border-yellow-100 dark:border-yellow-900/30 pb-3">
-              <div className="p-2 bg-yellow-100 dark:bg-yellow-900/50 rounded-lg text-yellow-600 dark:text-yellow-400">
-                <MonitorSmartphone className="w-5 h-5" />
-              </div>
-              <div>
-                <h3 className="font-bold text-lg text-yellow-700 dark:text-yellow-400">
-                  Client State (Zustand)
-                </h3>
-                <p className="text-xs text-muted-foreground">
-                  UI Interaction State
-                </p>
-              </div>
-            </div>
-            <ul className="space-y-3">
-              <FeatureItem text="Manajemen status UI internal (Nav, Modal)." />
-              <FeatureItem text="Ringan & Tanpa Boilerplate" highlight />
-              <FeatureItem text="Eliminasi Prop Drilling via Hooks." />
-            </ul>
-          </motion.div>
+          <div className="relative z-10 flex flex-col items-center justify-center h-full gap-8">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">
+              Data Flow Architecture
+            </h3>
 
-          {/* Result Summary */}
-          <motion.div
-            className="bg-muted/50 rounded-xl p-4 border border-border"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4 }}
-          >
-            <p className="text-sm font-medium text-center flex items-center justify-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-green-500" />
-              Hasil: Stabilitas sinkronisasi & Keterlacakan data meningkat.
-            </p>
-          </motion.div>
+            <StateManagementIllustration />
+          </div>
         </div>
 
         {/* Right Column: Explanations & Reasons */}
-        <div className="flex flex-col gap-4 h-full overflow-y-auto pr-2">
+        <div className="flex flex-col gap-4 h-full pr-2">
           {/* Why React Query? */}
           <motion.div
-            className="bg-card border border-red-200 dark:border-red-900/30 rounded-2xl p-5 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow"
+            className="flex-1 bg-card border border-red-200 dark:border-red-900/30 rounded-2xl p-6 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow flex flex-col"
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -125,10 +68,10 @@ export default function Slide08_StateManagement() {
 
             <div className="space-y-3">
               <div>
-                <h4 className="font-semibold text-sm mb-1 text-foreground">
+                <h4 className="font-semibold text-base mb-1 text-foreground">
                   Masalah yang Diselesaikan
                 </h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   Managing server state secara manual (dengan{" "}
                   <code>useEffect</code>) sangat rawan bug: race conditions,
                   caching yang tidak konsisten, dan boilerplate yang repetitif.
@@ -136,7 +79,7 @@ export default function Slide08_StateManagement() {
               </div>
 
               <div>
-                <h4 className="font-semibold text-sm mb-1 text-foreground">
+                <h4 className="font-semibold text-base mb-1 text-foreground">
                   Kelebihan Utama
                 </h4>
                 <ul className="grid grid-cols-1 gap-1.5">
@@ -159,7 +102,7 @@ export default function Slide08_StateManagement() {
 
           {/* Why Zustand? */}
           <motion.div
-            className="bg-card border border-yellow-200 dark:border-yellow-900/30 rounded-2xl p-5 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow"
+            className="flex-1 bg-card border border-yellow-200 dark:border-yellow-900/30 rounded-2xl p-6 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow flex flex-col"
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -175,10 +118,10 @@ export default function Slide08_StateManagement() {
 
             <div className="space-y-3">
               <div>
-                <h4 className="font-semibold text-sm mb-1 text-foreground">
+                <h4 className="font-semibold text-base mb-1 text-foreground">
                   Masalah yang Diselesaikan
                 </h4>
-                <p className="text-xs text-muted-foreground leading-relaxed">
+                <p className="text-sm text-muted-foreground leading-relaxed">
                   Redux memerlukan boilerplate yang besar (store, reducer,
                   action). Context API sering menyebabkan *unnecessary
                   re-renders* pada komponen child.
@@ -186,12 +129,12 @@ export default function Slide08_StateManagement() {
               </div>
 
               <div>
-                <h4 className="font-semibold text-sm mb-1 text-foreground">
+                <h4 className="font-semibold text-base mb-1 text-foreground">
                   Kelebihan Utama
                 </h4>
                 <ul className="grid grid-cols-1 gap-1.5">
                   <ReasonItem
-                    title="Minimalist API"
+                    title="Ringan & Ringkas (Minimalist API)"
                     desc="Sangat mudah dipahami. Tanpa provider wrapping yang rumit."
                   />
                   <ReasonItem
@@ -212,6 +155,127 @@ export default function Slide08_StateManagement() {
   );
 }
 
+function StateManagementIllustration() {
+  return (
+    <div className="w-full max-w-sm relative flex flex-col gap-6 p-4">
+      {/* Server & Network Layer */}
+      <div className="flex items-center justify-between gap-4">
+        <ServerNode />
+        <ConnectionLine active />
+        <QueryNode />
+      </div>
+
+      {/* Connection to UI */}
+      <div className="flex justify-center h-8">
+        <motion.div
+          className="w-0.5 bg-gradient-to-b from-red-500 to-indigo-500"
+          initial={{ height: 0 }}
+          animate={{ height: "100%" }}
+          transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
+        />
+      </div>
+
+      {/* UI & Client State Layer */}
+      <div className="flex items-center justify-between gap-4">
+        <ZustandNode />
+        <ConnectionLine active color="bg-yellow-500" />
+        <UINode />
+      </div>
+    </div>
+  );
+}
+
+function ServerNode() {
+  return (
+    <div className="flex flex-col items-center gap-2 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-700 shadow-sm relative w-24">
+      <div className="absolute -top-2 px-2 py-0.5 bg-slate-600 text-white text-[9px] rounded-full font-bold">
+        API
+      </div>
+      <Server className="w-6 h-6 text-slate-600 dark:text-slate-400" />
+      <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">
+        Server
+      </span>
+    </div>
+  );
+}
+
+function QueryNode() {
+  return (
+    <motion.div
+      className="flex flex-col items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800 shadow-sm relative w-24"
+      animate={{
+        boxShadow: [
+          "0 0 0px rgba(239, 68, 68, 0)",
+          "0 0 10px rgba(239, 68, 68, 0.3)",
+          "0 0 0px rgba(239, 68, 68, 0)",
+        ],
+      }}
+      transition={{ duration: 2, repeat: Infinity }}
+    >
+      <div className="absolute -top-2 px-2 py-0.5 bg-red-500 text-white text-[9px] rounded-full font-bold shadow-sm">
+        Cache
+      </div>
+      <Server className="w-6 h-6 text-red-500" />
+      <span className="text-[10px] font-bold text-red-600 dark:text-red-400">
+        React Query
+      </span>
+    </motion.div>
+  );
+}
+
+function ZustandNode() {
+  return (
+    <motion.div
+      className="flex flex-col items-center gap-2 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl border border-yellow-200 dark:border-yellow-800 shadow-sm relative w-24"
+      animate={{ y: [0, -2, 0] }}
+      transition={{ duration: 3, repeat: Infinity }}
+    >
+      <div className="absolute -top-2 px-2 py-0.5 bg-yellow-500 text-white text-[9px] rounded-full font-bold shadow-sm">
+        Store
+      </div>
+      <MonitorSmartphone className="w-6 h-6 text-yellow-500" />
+      <span className="text-[10px] font-bold text-yellow-600 dark:text-yellow-400">
+        Zustand
+      </span>
+    </motion.div>
+  );
+}
+
+function UINode() {
+  return (
+    <div className="flex flex-col items-center gap-2 p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-200 dark:border-indigo-800 shadow-sm relative w-24">
+      <div className="absolute -top-2 px-2 py-0.5 bg-indigo-500 text-white text-[9px] rounded-full font-bold shadow-sm">
+        View
+      </div>
+      <CheckCircle2 className="w-6 h-6 text-indigo-500" />
+      <span className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400">
+        Component
+      </span>
+    </div>
+  );
+}
+
+function ConnectionLine({
+  active,
+  color = "bg-red-500",
+}: {
+  active?: boolean;
+  color?: string;
+}) {
+  return (
+    <div className="flex-1 h-0.5 bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+      {active && (
+        <motion.div
+          className={`absolute inset-0 w-1/2 ${color}`}
+          initial={{ x: "-100%" }}
+          animate={{ x: "200%" }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+        />
+      )}
+    </div>
+  );
+}
+
 function FeatureItem({
   text,
   highlight,
@@ -224,7 +288,7 @@ function FeatureItem({
       <div className="mt-1 w-1.5 h-1.5 rounded-full bg-foreground shrink-0" />
       <span
         className={cn(
-          "text-sm",
+          "text-base",
           highlight ? "font-semibold text-foreground" : "text-muted-foreground",
         )}
       >

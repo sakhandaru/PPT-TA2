@@ -4,9 +4,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   GitMerge,
-  Cpu,
-  Zap,
-  ShieldCheck,
   LayoutTemplate,
   RefreshCw,
   Rocket,
@@ -55,7 +52,11 @@ export default function Slide04_Methodology() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
           >
-            Mengadopsi standar industri modern untuk menjamin{" "}
+            Metode ini dipilih karena{" "}
+            <strong className="text-zinc-900 dark:text-zinc-100">
+              siklusnya pendek dan iteratif
+            </strong>
+            . Mengadopsi standar industri modern untuk menjamin{" "}
             <strong className="text-zinc-900 dark:text-zinc-100">
               kualitas, performa, dan skalabilitas
             </strong>{" "}
@@ -64,27 +65,27 @@ export default function Slide04_Methodology() {
 
           <div className="grid gap-4">
             <StandardItem
-              title="Next.js 14 Framework"
-              desc="Standar SEO & Kecepatan Loading (Google Friendly)."
-              icon={<Cpu className="w-5 h-5" />}
+              title="Continuous Refactoring"
+              desc="Kode diperbaiki secara terus menerus untuk menjaga kualitas & adaptabilitas."
+              icon={<RefreshCw className="w-5 h-5 text-blue-500" />}
               delay={0.3}
             />
             <StandardItem
-              title="Tailwind CSS System"
-              desc="Pengembangan UI Cepat & Konsisten (Design System)."
-              icon={<LayoutTemplate className="w-5 h-5" />}
+              title="Simple Design"
+              desc="Mengutamakan solusi arsitektur yang sederhana, bersih, namun efektif."
+              icon={<LayoutTemplate className="w-5 h-5 text-amber-500" />}
               delay={0.4}
             />
             <StandardItem
-              title="Lighthouse Audit"
-              desc="Standar Kualitas Global (Performance & Accessibility)."
-              icon={<ShieldCheck className="w-5 h-5" />}
+              title="Strict Testing (TDD)"
+              desc="Memastikan setiap komponen teruji secara otomatis sebelum digabungkan."
+              icon={<TestTube2 className="w-5 h-5 text-emerald-500" />}
               delay={0.5}
             />
             <StandardItem
-              title="Extreme Programming"
-              desc="Metode Agile untuk adaptasi perubahan bisnis yang cepat."
-              icon={<Zap className="w-5 h-5" />}
+              title="Iterative Delivery"
+              desc="Selaras dengan siklus: Planning, Design, Coding, Testing, & Deploy."
+              icon={<Rocket className="w-5 h-5 text-purple-600" />}
               delay={0.6}
               isHighlight
             />

@@ -45,21 +45,22 @@ export default function Slide09_UIOptimization() {
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 flex-1 min-h-0">
         {/* Left Column: Explanations */}
-        <div className="flex flex-col space-y-6 overflow-y-auto pr-2">
+        <div className="flex flex-col gap-6 h-full pr-2">
           {/* Design System Section */}
           <DetailSection
             title="Desain Berbasis Komponen"
             icon={<Component className="w-5 h-5 text-indigo-500" />}
             delay={0.2}
+            className="flex-1"
           >
-            <ul className="space-y-3 mt-1">
+            <ul className="space-y-3 mt-1 flex-1">
               <li className="flex items-start gap-3">
                 <div className="p-1.5 bg-indigo-100 dark:bg-indigo-900/50 rounded-md shrink-0 mt-0.5">
                   <Layers className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                 </div>
                 <div>
-                  <span className="font-semibold text-sm">Atomic Design</span>
-                  <p className="text-xs text-muted-foreground mt-0.5">
+                  <span className="font-semibold text-base">Atomic Design</span>
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     Membagi UI menjadi Atoms, Molecules, & Organisms untuk
                     reusability maksimal.
                   </p>
@@ -70,10 +71,10 @@ export default function Slide09_UIOptimization() {
                   <Palette className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                 </div>
                 <div>
-                  <span className="font-semibold text-sm">
+                  <span className="font-semibold text-base">
                     Tailwind CSS (Utility-First)
                   </span>
-                  <p className="text-xs text-muted-foreground mt-0.5">
+                  <p className="text-sm text-muted-foreground mt-0.5">
                     Styling yang konsisten, modular, dan terprediksi tanpa CSS
                     global yang membengkak.
                   </p>
@@ -87,6 +88,7 @@ export default function Slide09_UIOptimization() {
             title="Optimasi Aset & Berkas"
             icon={<Zap className="w-5 h-5 text-amber-500" />}
             delay={0.3}
+            className="flex-1"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
               <OptCard
@@ -137,7 +139,7 @@ export default function Slide09_UIOptimization() {
 
           {/* Tailwind Pipeline Visualizer (Gambar 10 Replacement) */}
           <motion.div
-            className="flex-[0.8] bg-muted/20 border border-border rounded-2xl flex flex-col items-center justify-center p-4 relative overflow-hidden"
+            className="flex-1 bg-muted/20 border border-border rounded-2xl flex flex-col items-center justify-center p-4 relative overflow-hidden"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -161,15 +163,20 @@ function DetailSection({
   icon,
   children,
   delay,
+  className,
 }: {
   title: string;
   icon: React.ReactNode;
   children: React.ReactNode;
   delay: number;
+  className?: string;
 }) {
   return (
     <motion.div
-      className="flex flex-col gap-3 p-4 bg-card border border-border/50 rounded-xl shadow-sm"
+      className={cn(
+        "flex flex-col gap-3 p-4 bg-card border border-border/50 rounded-xl shadow-sm",
+        className,
+      )}
       initial={{ x: -20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay }}

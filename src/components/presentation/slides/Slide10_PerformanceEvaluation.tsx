@@ -44,96 +44,140 @@ export default function Slide10_PerformanceEvaluation() {
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 flex-1 min-h-0">
         {/* Left Column: Metrics & Comparison */}
-        <div className="flex flex-col space-y-6 overflow-y-auto pr-2">
-          {/* Key Metrics Comparison */}
-          <div className="space-y-4">
-            <MetricComparison
-              label="Largest Contentful Paint (LCP)"
-              before="19.4s"
-              after="1.2s"
-              improvement="93.8%"
-              icon={<Timer className="w-4 h-4" />}
-              delay={0.2}
-            />
-            <MetricComparison
-              label="Total Blocking Time (TBT)"
-              before="80ms"
-              after="30ms"
-              improvement="62.5%"
-              icon={<MousePointerClick className="w-4 h-4" />}
-              delay={0.3}
-            />
-            <MetricComparison
-              label="Cumulative Layout Shift (CLS)"
-              before="0.063"
-              after="0.001"
-              improvement="98.4%"
-              icon={<Layout className="w-4 h-4" />}
-              delay={0.4}
-            />
-          </div>
-
-          {/* Performance Score Card */}
+        <div className="flex flex-col gap-6 h-full overflow-y-auto pr-2">
+          {/* Animated Score Graph (Replacing Core Web Vitals) */}
           <motion.div
-            className="bg-card border border-border rounded-xl p-5 shadow-sm"
+            className="flex-1 bg-card border border-border rounded-2xl p-6 shadow-sm flex flex-col justify-center gap-4 relative overflow-hidden"
             initial={{ x: -20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.2 }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <Trophy className="w-6 h-6 text-yellow-500" />
+            <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+              <TrendingUp className="w-32 h-32 text-blue-500" />
+            </div>
+
+            <div className="flex items-center gap-3 mb-2 relative z-10">
+              <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+                <Activity className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              </div>
               <div>
-                <h3 className="font-bold text-lg">
-                  Lighthouse Performance Score
-                </h3>
+                <h3 className="font-bold text-lg">Peningkatan Performa</h3>
                 <p className="text-xs text-muted-foreground">
-                  Overall Efficiency
+                  Skor Lighthouse
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center justify-between gap-4">
-              <div className="flex flex-col items-center p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-100 dark:border-yellow-900/50 w-full">
-                <span className="text-xs font-bold text-yellow-600 dark:text-yellow-400 uppercase">
+            <div className="flex-1 flex flex-col justify-end gap-6 relative z-10">
+              <div className="flex items-end justify-around h-32 px-4 gap-8">
+                {/* Before Bar */}
+                <div className="flex flex-col items-center gap-2 w-full">
+                  <span className="font-bold text-2xl text-red-500">62</span>
+                  <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg h-32 relative overflow-hidden">
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 bg-red-400 dark:bg-red-500/80 rounded-t-lg"
+                      initial={{ height: 0 }}
+                      animate={{ height: "62%" }}
+                      transition={{
+                        duration: 1.5,
+                        ease: "easeOut",
+                        delay: 0.5,
+                      }}
+                    />
+                  </div>
+                  <span className="text-xs font-bold text-muted-foreground uppercase tracking-wide">
+                    Sebelum
+                  </span>
+                </div>
+
+                {/* Arrow */}
+                <div className="pb-8">
+                  <ArrowRight className="w-6 h-6 text-muted-foreground/50" />
+                </div>
+
+                {/* After Bar */}
+                <div className="flex flex-col items-center gap-2 w-full">
+                  <motion.span
+                    className="font-black text-4xl text-green-600 dark:text-green-400"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 2, type: "spring" }}
+                  >
+                    <CountUp to={93} />
+                  </motion.span>
+                  <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-t-lg h-32 relative overflow-hidden shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                    <motion.div
+                      className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-600 to-green-400 dark:from-green-700 dark:to-green-500 rounded-t-lg"
+                      initial={{ height: 0 }}
+                      animate={{ height: "93%" }}
+                      transition={{
+                        duration: 1.5,
+                        ease: "easeOut",
+                        delay: 0.8,
+                      }}
+                    />
+                  </div>
+                  <span className="text-xs font-bold text-green-600 dark:text-green-400 uppercase tracking-wide">
+                    Sesudah
+                  </span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Performance Score Card */}
+          <motion.div
+            className="flex-1 bg-card border border-border rounded-2xl p-6 shadow-sm flex flex-col justify-center"
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.4 }}
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg">
+                <Trophy className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+              </div>
+              <div>
+                <h3 className="font-bold text-lg">Lighthouse Score</h3>
+                <p className="text-xs text-muted-foreground">
+                  Overall Performance
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between gap-6 mb-6">
+              <div className="flex flex-col items-center p-4 bg-yellow-50 dark:bg-yellow-900/10 rounded-xl border border-yellow-100 dark:border-yellow-900/30 w-full relative overflow-hidden">
+                <span className="text-xs font-bold text-yellow-600 dark:text-yellow-400 uppercase mb-1">
                   Sebelum
                 </span>
-                <span className="text-3xl font-black text-yellow-600 dark:text-yellow-400">
+                <span className="text-4xl font-black text-yellow-600 dark:text-yellow-400">
                   62
                 </span>
               </div>
-              <ArrowRight className="w-6 h-6 text-muted-foreground shrink-0" />
-              <div className="flex flex-col items-center p-3 bg-green-50 dark:bg-green-900/20 rounded-lg border border-green-100 dark:border-green-900/50 w-full">
-                <span className="text-xs font-bold text-green-600 dark:text-green-400 uppercase">
+              <ArrowRight className="w-8 h-8 text-muted-foreground/50 shrink-0" />
+              <div className="flex flex-col items-center p-4 bg-green-50 dark:bg-green-900/10 rounded-xl border border-green-100 dark:border-green-900/30 w-full relative overflow-hidden">
+                <span className="text-xs font-bold text-green-600 dark:text-green-400 uppercase mb-1">
                   Sesudah
                 </span>
-                <span className="text-3xl font-black text-green-600 dark:text-green-400">
+                <span className="text-4xl font-black text-green-600 dark:text-green-400">
                   93
                 </span>
               </div>
             </div>
-            <p className="text-center text-xs text-muted-foreground mt-3">
-              Peningkatan signifikan sebesar <strong>+50%</strong>.
-            </p>
-          </motion.div>
 
-          {/* Conclusion */}
-          <motion.div
-            className="p-4 bg-green-50/50 dark:bg-green-900/10 border border-green-200 dark:border-green-900/30 rounded-lg"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
-          >
-            <p className="text-sm text-green-800 dark:text-green-300 font-medium text-center">
-              ✅ Sistem memenuhi standar ideal Core Web Vitals (Good Tier).
-            </p>
+            <div className="p-3 bg-green-100/50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg text-center">
+              <p className="text-sm text-green-800 dark:text-green-300 font-medium flex items-center justify-center gap-2">
+                <CheckCircle2 className="w-4 h-4" />
+                Sistem memenuhi standar &quot;Good Tier&quot; Web Vitals.
+              </p>
+            </div>
           </motion.div>
         </div>
 
         {/* Right Column: Visual Charts & Tables */}
-        <div className="flex flex-col gap-6 h-full">
+        <div className="flex flex-col gap-6 h-full min-h-0">
           {/* Lighthouse Evidence Image */}
           <motion.div
-            className="flex-[0.4] bg-card border border-border rounded-2xl p-4 relative overflow-hidden flex items-center justify-center group"
+            className="flex-1 bg-card border border-border rounded-2xl p-4 relative overflow-hidden flex items-center justify-center group min-h-[250px]"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -155,7 +199,7 @@ export default function Slide10_PerformanceEvaluation() {
 
           {/* Table 15 (Metrics Table) */}
           <motion.div
-            className="flex-[1.2] bg-card border border-border rounded-2xl overflow-hidden flex flex-col"
+            className="flex-1 bg-card border border-border rounded-2xl overflow-hidden flex flex-col min-h-[300px]"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -393,4 +437,36 @@ function Badge({
       {children}
     </span>
   );
+}
+
+function CountUp({ to }: { to: number }) {
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    const duration = 1500; // 1.5s
+    const steps = 60;
+    const interval = duration / steps;
+    const increment = to / steps;
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= to) {
+        setCount(to);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(current));
+      }
+    }, interval);
+
+    // Initial delay to sync with bar animation
+    const startDelay = setTimeout(() => {}, 800);
+
+    return () => {
+      clearInterval(timer);
+      clearTimeout(startDelay);
+    };
+  }, [to]);
+
+  return <>{count}</>;
 }

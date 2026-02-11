@@ -208,21 +208,21 @@ function SequenceDiagram() {
     },
     {
       id: "ui",
-      label: "Antarmuka Website",
+      label: "Lapisan Presentasi",
       icon: null,
       color:
         "bg-cyan-100 text-cyan-700 border-cyan-200 dark:bg-cyan-900/30 dark:text-cyan-300 dark:border-cyan-800",
     },
     {
       id: "logic",
-      label: "Logika Aplikasi",
+      label: "Lapisan Logika",
       icon: null,
       color:
         "bg-orange-100 text-orange-700 border-orange-200 dark:bg-orange-900/30 dark:text-orange-300 dark:border-orange-800",
     },
     {
       id: "data",
-      label: "Sumber Data",
+      label: "Lapisan Data",
       icon: null,
       color:
         "bg-sky-100 text-sky-700 border-sky-200 dark:bg-sky-900/30 dark:text-sky-300 dark:border-sky-800",

@@ -28,9 +28,12 @@ export default function Slide08_StateManagement() {
           </h2>
         </div>
         <p className="text-xl text-muted-foreground ml-16">
-          Pemisahan tanggung jawab:{" "}
-          <span className="font-semibold text-red-500">Server State</span> vs{" "}
-          <span className="font-semibold text-yellow-500">Client State</span>
+          Pemisahan Data:{" "}
+          <span className="font-semibold text-red-500">Data Server (API)</span>{" "}
+          &{" "}
+          <span className="font-semibold text-yellow-500">
+            Data Aplikasi (Lokal)
+          </span>
         </p>
       </motion.div>
 
@@ -63,7 +66,7 @@ export default function Slide08_StateManagement() {
 
             <h3 className="font-bold text-lg text-red-600 dark:text-red-400 mb-3 flex items-center gap-2">
               <div className="w-1.5 h-6 bg-red-500 rounded-full"></div>
-              Mengapa React Query?
+              Manajemen Data Server (React Query)
             </h3>
 
             <div className="space-y-3">
@@ -72,9 +75,9 @@ export default function Slide08_StateManagement() {
                   Masalah yang Diselesaikan
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Managing server state secara manual (dengan{" "}
-                  <code>useEffect</code>) sangat rawan bug: race conditions,
-                  caching yang tidak konsisten, dan boilerplate yang repetitif.
+                  Mengambil data dari server secara manual seringkali{" "}
+                  <strong>lambat</strong>, <strong>rawan error</strong>, dan
+                  membuat kode menjadi <strong>rumit</strong>.
                 </p>
               </div>
 
@@ -84,16 +87,16 @@ export default function Slide08_StateManagement() {
                 </h4>
                 <ul className="grid grid-cols-1 gap-1.5">
                   <ReasonItem
-                    title="Automatic Background Refetching"
-                    desc="Data selalu fresh tanpa user perlu refresh halaman manual (SWR strategy)."
+                    title="Otomatis Selalu Update"
+                    desc="Data selalu terbaru. Pengguna tidak perlu refresh halaman manual untuk melihat info terkini."
                   />
                   <ReasonItem
-                    title="Smart Caching & Deduping"
-                    desc="Mencegah request redundant ke server, menghemat bandwidth."
+                    title="Akses Cepat & Hemat Kuota"
+                    desc="Menyimpan data sementara (cache) agar tidak perlu download ulang berulang kali."
                   />
                   <ReasonItem
-                    title="Simplified Async Logic"
-                    desc="Menggantikan ratusan baris kode <code>useEffect</code> & <code>useState</code> menjadi hook deklaratif."
+                    title="Kode Lebih Rapi & Stabil"
+                    desc="Mencegah bug dan error dengan menyederhanakan proses pengambilan data yang rumit."
                   />
                 </ul>
               </div>
@@ -113,7 +116,7 @@ export default function Slide08_StateManagement() {
 
             <h3 className="font-bold text-lg text-yellow-600 dark:text-yellow-400 mb-3 flex items-center gap-2">
               <div className="w-1.5 h-6 bg-yellow-500 rounded-full"></div>
-              Mengapa Zustand?
+              Manajemen Data Aplikasi (Zustand)
             </h3>
 
             <div className="space-y-3">
@@ -122,9 +125,9 @@ export default function Slide08_StateManagement() {
                   Masalah yang Diselesaikan
                 </h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Redux memerlukan boilerplate yang besar (store, reducer,
-                  action). Context API sering menyebabkan *unnecessary
-                  re-renders* pada komponen child.
+                  Metode lama (seperti Redux) seringkali{" "}
+                  <strong>terlalu rumit</strong> dan membuat aplikasi terasa{" "}
+                  <strong>berat</strong> saat digunakan.
                 </p>
               </div>
 
@@ -134,16 +137,16 @@ export default function Slide08_StateManagement() {
                 </h4>
                 <ul className="grid grid-cols-1 gap-1.5">
                   <ReasonItem
-                    title="Ringan & Ringkas (Minimalist API)"
-                    desc="Sangat mudah dipahami. Tanpa provider wrapping yang rumit."
+                    title="Sangat Ringan"
+                    desc="Ukuran pustaka sangat kecil, tidak memperlambat loading aplikasi sama sekali."
                   />
                   <ReasonItem
-                    title="Performance Optimization"
-                    desc="Komponen hanya me-render ulang jika spefisik *slice* state berubah."
+                    title="Kinerja Tinggi (Responsif)"
+                    desc="Hanya memperbarui bagian layar yang berubah, membuat aplikasi terasa instan."
                   />
                   <ReasonItem
-                    title="Transient Updates"
-                    desc="Update state tanpa re-render (berguna untuk animasi/input frekuensi tinggi)."
+                    title="Interaksi Mulus"
+                    desc="Cocok untuk fitur interaktif yang butuh kecepatan tinggi tanpa jeda (lag)."
                   />
                 </ul>
               </div>

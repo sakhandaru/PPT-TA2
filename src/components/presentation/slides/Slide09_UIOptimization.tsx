@@ -59,10 +59,15 @@ export default function Slide09_UIOptimization() {
                   <Layers className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
                 </div>
                 <div>
-                  <span className="font-semibold text-base">Atomic Design</span>
-                  <p className="text-sm text-muted-foreground mt-0.5">
-                    Membagi UI menjadi Atoms, Molecules, & Organisms untuk
-                    reusability maksimal.
+                  <span className="font-semibold text-base">
+                    Atomic Design Hierarchy
+                  </span>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                    Metodologi desain yang memecah tampilan kompleks menjadi
+                    komponen-komponen kecil (atom) yang digabungkan kembali
+                    menjadi fitur utuh (organisme). Menjamin konsistensi visual
+                    dan kemudahan perawatan kode (maintainability) jangka
+                    panjang.
                   </p>
                 </div>
               </li>
@@ -72,11 +77,13 @@ export default function Slide09_UIOptimization() {
                 </div>
                 <div>
                   <span className="font-semibold text-base">
-                    Tailwind CSS (Utility-First)
+                    Utility-First CSS (Tailwind)
                   </span>
-                  <p className="text-sm text-muted-foreground mt-0.5">
-                    Styling yang konsisten, modular, dan terprediksi tanpa CSS
-                    global yang membengkak.
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                    Pendekatan styling modern yang mempercepat pengembangan UI
+                    tanpa menulis file CSS manual. Menghasilkan ukuran file CSS
+                    akhir yang sangat kecil karena hanya menyertakan style yang
+                    benar-benar digunakan.
                   </p>
                 </div>
               </li>
@@ -90,29 +97,23 @@ export default function Slide09_UIOptimization() {
             delay={0.3}
             className="flex-1"
           >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
-              <OptCard
-                icon={<Scissors className="w-4 h-4" />}
-                title="Purge & JIT"
-                desc="Hapus CSS tak terpakai."
-                color="bg-rose-100 text-rose-700 dark:bg-rose-900/30 dark:text-rose-400"
-              />
+            <div className="flex flex-col gap-3 mt-1">
               <OptCard
                 icon={<FileImage className="w-4 h-4" />}
-                title="WebP Images"
-                desc="Auto-convert via Next/Image."
+                title="Next.js Image Optimization"
+                desc="Otomatis mengkonversi gambar ke format modern (WebP/AVIF) dan menyesuaikan ukuran (resize) sesuai perangkat pengguna. Menghemat bandwidth hingga 80% dibanding format JPG/PNG biasa."
                 color="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
               />
               <OptCard
                 icon={<PackageOpen className="w-4 h-4" />}
-                title="Code Splitting"
-                desc="Pecah bundle JS per rute."
+                title="Automatic Code Splitting"
+                desc="Memecah kode JavaScript menjadi bagian-bagian kecil per halaman. Pengguna hanya mengunduh kode yang diperlukan untuk halaman yang sedang dibuka, membuat loading awal jauh lebih cepat."
                 color="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
               />
               <OptCard
                 icon={<Box className="w-4 h-4" />}
-                title="Tree Shaking"
-                desc="Buang fungsi mati saat build."
+                title="Tree Shaking Algorithm"
+                desc="Secara cerdas mendeteksi dan membuang kode atau fungsi (dead code) yang tidak pernah digunakan dalam aplikasi, memastikan ukuran aplikasi sekecil mungkin."
                 color="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400"
               />
             </div>
@@ -202,13 +203,11 @@ function OptCard({
   color: string;
 }) {
   return (
-    <div className="flex items-start gap-3 p-2 rounded-lg bg-muted/30 border border-transparent hover:border-border transition-colors">
-      <div className={cn("p-1.5 rounded-md shrink-0", color)}>{icon}</div>
+    <div className="flex items-start gap-4 p-4 rounded-lg bg-muted/30 border border-transparent hover:border-border transition-colors">
+      <div className={cn("p-2.5 rounded-md shrink-0", color)}>{icon}</div>
       <div>
-        <h4 className="font-bold text-xs">{title}</h4>
-        <p className="text-[10px] text-muted-foreground leading-tight">
-          {desc}
-        </p>
+        <h4 className="font-bold text-base mb-1.5">{title}</h4>
+        <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
       </div>
     </div>
   );

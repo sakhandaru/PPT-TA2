@@ -161,8 +161,8 @@ export default function Slide07_Refactoring() {
               <h3 className="font-bold">Dampak Internal</h3>
             </div>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Eliminasi <strong>technical debt</strong> signifikan. Kode lebih
-              bersih, terprediksi, dan dependensi antar berkas menjadi teratur.
+              Eliminasi <strong>technical debt</strong> signifikan. Sehingga kode lebih
+              bersih, terprediksi, dan mudah dikelola karena dependensi antar berkas menjadi teratur.
             </p>
           </div>
         </div>

@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 
 export default function Slide05_Architecture() {
   return (
-    <div className="w-full h-full p-8 md:p-12 flex flex-col overflow-hidden">
+    <div className="w-full h-full px-8 pt-8 pb-16 md:px-12 md:pt-12 md:pb-16 flex flex-col overflow-hidden">
       <motion.div
         className="shrink-0 mb-6"
         initial={{ y: -20, opacity: 0 }}
@@ -113,7 +113,7 @@ export default function Slide05_Architecture() {
             <div className="absolute top-4 left-4 z-10">
               <div className="flex items-center gap-2 px-2 py-1 bg-muted/50 backdrop-blur-sm rounded-md border border-border/50">
                 <Layers className="w-3 h-3 text-blue-500" />
-                <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+                <span className="text-xs uppercase font-bold text-muted-foreground tracking-wider">
                   Structure
                 </span>
               </div>
@@ -128,7 +128,7 @@ export default function Slide05_Architecture() {
             <div className="absolute top-4 left-4 z-10">
               <div className="flex items-center gap-2 px-2 py-1 bg-muted/50 backdrop-blur-sm rounded-md border border-border/50">
                 <Workflow className="w-3 h-3 text-purple-500" />
-                <span className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+                <span className="text-xs uppercase font-bold text-muted-foreground tracking-wider">
                   Data Flow
                 </span>
               </div>
@@ -198,152 +198,156 @@ function ArchitectureStructureDiagram() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveLayer((prev) => (prev + 1) % 3);
-    }, 1500);
+    }, 2000); // Slower interval for better readability
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col gap-2 relative">
-      <div className="text-[10px] font-bold text-center text-muted-foreground uppercase tracking-widest mb-1 opacity-0">
-        Architecture Layers
-      </div>
-
-      {/* UI Layer */}
+    <div className="w-full h-full flex flex-col justify-between relative py-2 gap-2">
+      {/* 1. Presentation Layer (Top) */}
       <motion.div
         className={cn(
-          "border rounded-lg p-2 flex flex-col gap-1 transition-all duration-500",
+          "flex-1 border-2 rounded-xl p-3 flex flex-col justify-center transition-all duration-500 relative",
           activeLayer === 0
-            ? "border-indigo-500 bg-indigo-50/80 dark:bg-indigo-900/40 shadow-md scale-[1.02] z-10"
-            : "border-border bg-background/50 opacity-40 blur-[0.5px]",
+            ? "border-indigo-500 bg-indigo-50/80 dark:bg-indigo-900/20 shadow-lg z-10"
+            : "border-border bg-background/50 opacity-60 grayscale-[0.5]",
         )}
+        animate={{
+          scale: activeLayer === 0 ? 1.02 : 1,
+        }}
       >
-        <div className="flex items-center justify-between">
-          <div className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400">
-            Presentation Layer
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-4">
+            <div className="text-sm font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-2 shrink-0">
+              <Monitor className="w-4 h-4" />
+              Presentation
+            </div>
+            <div className="flex gap-2">
+              <Node
+                label="Homepage"
+                isActive={activeLayer === 0}
+                color="bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100"
+              />
+              <Node
+                label="News"
+                isActive={activeLayer === 0}
+                color="bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100"
+              />
+            </div>
           </div>
+
           {activeLayer === 0 && (
             <motion.span
               layoutId="badge"
-              className="text-[9px] bg-indigo-500 text-white px-1.5 rounded-full"
+              className="text-[10px] bg-indigo-500 text-white px-2 py-0.5 rounded-full font-bold shadow-sm shrink-0"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
             >
               Active
             </motion.span>
           )}
         </div>
 
-        <div className="flex justify-center flex-wrap gap-1">
-          <Node
-            label="Homepage"
-            color={
-              activeLayer === 0
-                ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100"
-                : "bg-muted text-muted-foreground"
-            }
-          />
-          <Node
-            label="News"
-            color={
-              activeLayer === 0
-                ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-900 dark:text-indigo-100"
-                : "bg-muted text-muted-foreground"
-            }
-          />
+        {/* Connector Arrow */}
+        <div className="absolute -bottom-5 left-8 z-20 text-muted-foreground">
+          <ArrowRight className="w-5 h-5 rotate-90" />
         </div>
       </motion.div>
 
-      {/* Arrow Down */}
-      <div className="flex justify-center -my-1 z-0">
-        <ArrowRight className="w-3 h-3 text-muted-foreground rotate-90" />
-      </div>
-
-      {/* Logic Layer */}
+      {/* 2. Logic Layer (Middle) */}
       <motion.div
         className={cn(
-          "border rounded-lg p-2 flex flex-col gap-1 transition-all duration-500",
+          "flex-1 border-2 rounded-xl p-3 flex flex-col justify-center transition-all duration-500 relative",
           activeLayer === 1
-            ? "border-orange-500 bg-orange-50/80 dark:bg-orange-900/40 shadow-md scale-[1.02] z-10"
-            : "border-border bg-background/50 opacity-40 blur-[0.5px]",
+            ? "border-orange-500 bg-orange-50/80 dark:bg-orange-900/20 shadow-lg z-10"
+            : "border-border bg-background/50 opacity-60 grayscale-[0.5]",
         )}
+        animate={{
+          scale: activeLayer === 1 ? 1.02 : 1,
+        }}
       >
-        <div className="flex items-center justify-between">
-          <div className="text-[10px] font-bold text-orange-600 dark:text-orange-400">
-            Logic & State Layer
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-4">
+            <div className="text-sm font-bold text-orange-600 dark:text-orange-400 flex items-center gap-2 shrink-0">
+              <Cpu className="w-4 h-4" />
+              Logic & State
+            </div>
+            <div className="flex gap-2">
+              <Node
+                label="Zustand"
+                isActive={activeLayer === 1}
+                color="bg-orange-100 dark:bg-orange-800 text-orange-900 dark:text-orange-100"
+              />
+              <Node
+                label="Query"
+                isActive={activeLayer === 1}
+                color="bg-orange-100 dark:bg-orange-800 text-orange-900 dark:text-orange-100"
+              />
+            </div>
           </div>
+
           {activeLayer === 1 && (
             <motion.span
               layoutId="badge"
-              className="text-[9px] bg-orange-500 text-white px-1.5 rounded-full"
+              className="text-[10px] bg-orange-500 text-white px-2 py-0.5 rounded-full font-bold shadow-sm shrink-0"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
             >
               Active
             </motion.span>
           )}
         </div>
-        <div className="flex justify-center gap-2">
-          <Node
-            label="Zustand"
-            color={
-              activeLayer === 1
-                ? "bg-orange-100 dark:bg-orange-800 text-orange-900 dark:text-orange-100"
-                : "bg-muted text-muted-foreground"
-            }
-          />
-          <Node
-            label="Query"
-            color={
-              activeLayer === 1
-                ? "bg-orange-100 dark:bg-orange-800 text-orange-900 dark:text-orange-100"
-                : "bg-muted text-muted-foreground"
-            }
-          />
+
+        {/* Connector Arrow */}
+        <div className="absolute -bottom-5 left-8 z-20 text-muted-foreground">
+          <ArrowRight className="w-5 h-5 rotate-90" />
         </div>
       </motion.div>
 
-      {/* Arrow Down */}
-      <div className="flex justify-center -my-1 z-0">
-        <ArrowRight className="w-3 h-3 text-muted-foreground rotate-90" />
-      </div>
-
-      {/* Data Layer */}
+      {/* 3. Data Layer (Bottom) */}
       <motion.div
         className={cn(
-          "border rounded-lg p-2 flex-1 transition-all duration-500",
+          "flex-1 border-2 rounded-xl p-3 flex flex-col justify-center transition-all duration-500 relative",
           activeLayer === 2
-            ? "border-emerald-500 bg-emerald-50/80 dark:bg-emerald-900/40 shadow-md scale-[1.02] z-10"
-            : "border-border bg-background/50 opacity-40 blur-[0.5px]",
+            ? "border-emerald-500 bg-emerald-50/80 dark:bg-emerald-900/20 shadow-lg z-10"
+            : "border-border bg-background/50 opacity-60 grayscale-[0.5]",
         )}
+        animate={{
+          scale: activeLayer === 2 ? 1.02 : 1,
+        }}
       >
-        <div className="flex items-center justify-between mb-1">
-          <div className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
-            Data Layer
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-4">
+            <div className="text-sm font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2 shrink-0">
+              <Database className="w-4 h-4" />
+              Data
+            </div>
+            <div className="flex gap-2">
+              <Node
+                label="API"
+                icon={<Cloud className="w-3 h-3" />}
+                isActive={activeLayer === 2}
+                color="bg-emerald-100 dark:bg-emerald-800 text-emerald-900 dark:text-emerald-100"
+              />
+              <Node
+                label="Stream"
+                icon={<PlayCircle className="w-3 h-3" />}
+                isActive={activeLayer === 2}
+                color="bg-emerald-100 dark:bg-emerald-800 text-emerald-900 dark:text-emerald-100"
+              />
+            </div>
           </div>
+
           {activeLayer === 2 && (
             <motion.span
               layoutId="badge"
-              className="text-[9px] bg-emerald-500 text-white px-1.5 rounded-full"
+              className="text-[10px] bg-emerald-500 text-white px-2 py-0.5 rounded-full font-bold shadow-sm shrink-0"
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
             >
               Active
             </motion.span>
           )}
-        </div>
-        <div className="flex justify-center gap-2">
-          <Node
-            label="API"
-            icon={<Cloud className="w-3 h-3" />}
-            color={
-              activeLayer === 2
-                ? "bg-emerald-100 dark:bg-emerald-800 text-emerald-900 dark:text-emerald-100"
-                : "bg-muted text-muted-foreground"
-            }
-          />
-          <Node
-            label="Stream"
-            icon={<PlayCircle className="w-3 h-3" />}
-            color={
-              activeLayer === 2
-                ? "bg-emerald-100 dark:bg-emerald-800 text-emerald-900 dark:text-emerald-100"
-                : "bg-muted text-muted-foreground"
-            }
-          />
         </div>
       </motion.div>
     </div>
@@ -353,7 +357,7 @@ function ArchitectureStructureDiagram() {
 function DataFlowDiagram() {
   return (
     <div className="w-full h-full flex flex-col items-center justify-center p-2 bg-slate-50 dark:bg-slate-900/30 rounded-xl relative">
-      <div className="text-[10px] font-bold text-center text-muted-foreground uppercase tracking-widest mb-4">
+      <div className="text-xs font-bold text-center text-muted-foreground uppercase tracking-widest mb-4">
         Unidirectional Flow
       </div>
       <div className="flex items-center gap-1.5 md:gap-3 w-full justify-center">
@@ -380,7 +384,7 @@ function DataFlowDiagram() {
       </div>
 
       {/* Feedback Loop Visual */}
-      <div className="mt-4 flex items-center gap-2 text-[10px] text-muted-foreground border-t border-dashed border-border pt-2 w-full justify-center">
+      <div className="mt-4 flex items-center gap-2 text-xs text-muted-foreground border-t border-dashed border-border pt-2 w-full justify-center">
         <ArrowRight className="w-3 h-3 rotate-180" />
         <span>User Interaction triggers State Update</span>
       </div>
@@ -388,13 +392,18 @@ function DataFlowDiagram() {
   );
 }
 
-function Node({ label, icon, color = "bg-background" }: any) {
+function Node({ label, icon, color, isActive = true }: any) {
   return (
     <div
-      className={`${color} px-2 py-1 rounded-md shadow-sm border border-black/5 dark:border-white/5 flex items-center justify-center gap-1.5 min-w-[60px] transition-colors duration-500`}
+      className={cn(
+        "px-2 py-1 rounded-md shadow-sm border border-black/5 dark:border-white/5 flex items-center justify-center gap-1.5 min-w-[60px] transition-all duration-300",
+        isActive
+          ? color || "bg-background"
+          : "bg-muted text-muted-foreground opacity-70",
+      )}
     >
       {icon}
-      <span className="text-[9px] md:text-[10px] font-medium">{label}</span>
+      <span className="text-[10px] md:text-xs font-medium">{label}</span>
     </div>
   );
 }
@@ -403,7 +412,7 @@ function FlowStep({ icon, label }: any) {
   return (
     <div className="flex flex-col items-center gap-1.5 z-10 bg-background p-2 rounded-lg shadow-sm border border-border">
       {icon}
-      <span className="text-[8px] font-bold uppercase text-muted-foreground">
+      <span className="text-[10px] font-bold uppercase text-muted-foreground">
         {label}
       </span>
     </div>

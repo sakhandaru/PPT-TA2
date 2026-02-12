@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 
 export default function Slide08_StateManagement() {
   return (
-    <div className="w-full h-full p-8 md:p-12 flex flex-col overflow-hidden">
+    <div className="w-full h-full px-6 pt-6 pb-20 flex flex-col overflow-hidden gap-4">
       <motion.div
         className="shrink-0 mb-4"
         initial={{ y: -20, opacity: 0 }}
@@ -28,21 +28,18 @@ export default function Slide08_StateManagement() {
           </h2>
         </div>
         <p className="text-xl text-muted-foreground ml-16">
-          Pemisahan Data:{" "}
-          <span className="font-semibold text-red-500">Data Server (API)</span>{" "}
-          &{" "}
-          <span className="font-semibold text-yellow-500">
-            Data Aplikasi (Lokal)
-          </span>
+          Pemisahan tanggung jawab:{" "}
+          <span className="font-semibold text-red-500">Server State</span> vs{" "}
+          <span className="font-semibold text-yellow-500">Client State</span>
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 flex-1 min-h-0">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 flex-1 min-h-0">
         {/* Left Column: State Management Visual Configuration */}
-        <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-900/30 rounded-2xl p-6 relative overflow-hidden border border-slate-200 dark:border-slate-800">
+        <div className="flex flex-col h-full bg-slate-50 dark:bg-slate-900/30 rounded-xl p-4 relative overflow-hidden border border-slate-200 dark:border-slate-800">
           <div className="absolute inset-0 bg-grid-slate-200/50 dark:bg-grid-slate-800/20 [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none" />
 
-          <div className="relative z-10 flex flex-col items-center justify-center h-full gap-8">
+          <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4">
             <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">
               Data Flow Architecture
             </h3>
@@ -52,10 +49,10 @@ export default function Slide08_StateManagement() {
         </div>
 
         {/* Right Column: Explanations & Reasons */}
-        <div className="flex flex-col gap-4 h-full pr-2">
+        <div className="flex flex-col gap-3 h-full pr-1">
           {/* Why React Query? */}
           <motion.div
-            className="flex-1 bg-card border border-red-200 dark:border-red-900/30 rounded-2xl p-6 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow flex flex-col"
+            className="flex-1 bg-card border border-red-200 dark:border-red-900/30 rounded-xl p-3 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow flex flex-col justify-center"
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -66,37 +63,26 @@ export default function Slide08_StateManagement() {
 
             <h3 className="font-bold text-lg text-red-600 dark:text-red-400 mb-3 flex items-center gap-2">
               <div className="w-1.5 h-6 bg-red-500 rounded-full"></div>
-              Manajemen Data Server (React Query)
+              Mengapa React Query?
             </h3>
 
             <div className="space-y-3">
               <div>
-                <h4 className="font-semibold text-base mb-1 text-foreground">
-                  Masalah yang Diselesaikan
+                <h4 className="font-semibold text-base mb-2 text-foreground">
+                  Keunggulan Utama
                 </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Mengambil data dari server secara manual seringkali{" "}
-                  <strong>lambat</strong>, <strong>rawan error</strong>, dan
-                  membuat kode menjadi <strong>rumit</strong>.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-base mb-1 text-foreground">
-                  Kelebihan Utama
-                </h4>
-                <ul className="grid grid-cols-1 gap-1.5">
+                <ul className="grid grid-cols-1 gap-2">
                   <ReasonItem
-                    title="Otomatis Selalu Update"
-                    desc="Data selalu terbaru. Pengguna tidak perlu refresh halaman manual untuk melihat info terkini."
+                    title="Auto-Refetching"
+                    desc="Data di layar otomatis segar kembali tanpa perlu refresh manual."
                   />
                   <ReasonItem
-                    title="Akses Cepat & Hemat Kuota"
-                    desc="Menyimpan data sementara (cache) agar tidak perlu download ulang berulang kali."
+                    title="Smart Caching"
+                    desc="Menyimpan data sementara agar tidak perlu 'minta' ulang ke server."
                   />
                   <ReasonItem
-                    title="Kode Lebih Rapi & Stabil"
-                    desc="Mencegah bug dan error dengan menyederhanakan proses pengambilan data yang rumit."
+                    title="Background Sync"
+                    desc="Update terjadi di belakang layar, user tidak terganggu loading."
                   />
                 </ul>
               </div>
@@ -105,7 +91,7 @@ export default function Slide08_StateManagement() {
 
           {/* Why Zustand? */}
           <motion.div
-            className="flex-1 bg-card border border-yellow-200 dark:border-yellow-900/30 rounded-2xl p-6 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow flex flex-col"
+            className="flex-1 bg-card border border-yellow-200 dark:border-yellow-900/30 rounded-xl p-3 relative overflow-hidden group shadow-sm hover:shadow-md transition-shadow flex flex-col justify-center"
             initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -116,37 +102,26 @@ export default function Slide08_StateManagement() {
 
             <h3 className="font-bold text-lg text-yellow-600 dark:text-yellow-400 mb-3 flex items-center gap-2">
               <div className="w-1.5 h-6 bg-yellow-500 rounded-full"></div>
-              Manajemen Data Aplikasi (Zustand)
+              Mengapa Zustand?
             </h3>
 
             <div className="space-y-3">
               <div>
-                <h4 className="font-semibold text-base mb-1 text-foreground">
-                  Masalah yang Diselesaikan
+                <h4 className="font-semibold text-base mb-2 text-foreground">
+                  Keunggulan Utama
                 </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Metode lama (seperti Redux) seringkali{" "}
-                  <strong>terlalu rumit</strong> dan membuat aplikasi terasa{" "}
-                  <strong>berat</strong> saat digunakan.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="font-semibold text-base mb-1 text-foreground">
-                  Kelebihan Utama
-                </h4>
-                <ul className="grid grid-cols-1 gap-1.5">
+                <ul className="grid grid-cols-1 gap-2">
                   <ReasonItem
-                    title="Sangat Ringan"
-                    desc="Ukuran pustaka sangat kecil, tidak memperlambat loading aplikasi sama sekali."
+                    title="Zero Boilerplate"
+                    desc="Kode sangat ringkas dan ringan, tidak membebani kinerja aplikasi."
                   />
                   <ReasonItem
-                    title="Kinerja Tinggi (Responsif)"
-                    desc="Hanya memperbarui bagian layar yang berubah, membuat aplikasi terasa instan."
+                    title="Selective Re-rendering"
+                    desc="Hanya mengupdate bagian layar yang berubah, hemat baterai & memori."
                   />
                   <ReasonItem
-                    title="Interaksi Mulus"
-                    desc="Cocok untuk fitur interaktif yang butuh kecepatan tinggi tanpa jeda (lag)."
+                    title="Centralized Store"
+                    desc="Satu pusat kendali data yang rapi dan mudah dilacak."
                   />
                 </ul>
               </div>
@@ -160,7 +135,7 @@ export default function Slide08_StateManagement() {
 
 function StateManagementIllustration() {
   return (
-    <div className="w-full max-w-sm relative flex flex-col gap-6 p-4">
+    <div className="w-full max-w-sm relative flex flex-col gap-4 p-2">
       {/* Server & Network Layer */}
       <div className="flex items-center justify-between gap-4">
         <ServerNode />

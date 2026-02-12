@@ -11,12 +11,46 @@ import {
   PenTool,
   TestTube2,
   Users,
+  CheckCircle2,
 } from "lucide-react";
 
 export default function Slide04_Methodology() {
+  const steps = [
+    {
+      label: "Planning",
+      icon: <Users className="w-5 h-5 text-white" />,
+      color: "bg-blue-500",
+      angle: -90, // Top
+    },
+    {
+      label: "Design",
+      icon: <PenTool className="w-5 h-5 text-white" />,
+      color: "bg-indigo-500",
+      angle: -18, // Top Right
+    },
+    {
+      label: "Coding",
+      icon: <Code2 className="w-5 h-5 text-white" />,
+      color: "bg-pink-500",
+      angle: 54, // Bottom Right
+    },
+    {
+      label: "Testing",
+      icon: <TestTube2 className="w-5 h-5 text-white" />,
+      color: "bg-orange-500",
+      angle: 126, // Bottom Left
+    },
+    {
+      label: "Release",
+      icon: <Rocket className="w-5 h-5 text-white" />,
+      color: "bg-green-500",
+      angle: 198, // Left
+    },
+  ];
+
   return (
     // Added overflow-hidden and adjusted padding for no-scroll
-    <div className="w-full h-full p-8 md:p-12 flex flex-col overflow-hidden bg-zinc-50 dark:bg-zinc-950">
+    <div className="w-full h-full px-8 pt-8 pb-16 md:px-12 md:pt-12 md:pb-16 flex flex-col overflow-hidden bg-zinc-50 dark:bg-zinc-950">
       <motion.div
         className="shrink-0 mb-8"
         initial={{ y: -20, opacity: 0 }}
@@ -54,7 +88,7 @@ export default function Slide04_Methodology() {
           >
             Metode ini dipilih karena{" "}
             <strong className="text-zinc-900 dark:text-zinc-100">
-              siklusnya pendek dan iteratif
+              siklusnya cepat dan iteratif
             </strong>
             . Mengadopsi standar industri modern untuk menjamin{" "}
             <strong className="text-zinc-900 dark:text-zinc-100">
@@ -92,107 +126,114 @@ export default function Slide04_Methodology() {
           </div>
         </div>
 
-        {/* Right Column: XP Cycle Diagram - Scaled down to fit */}
-        <motion.div
-          className="flex items-center justify-center relative h-full max-h-[450px]"
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.5, type: "spring" }}
-        >
-          {/* Central XP Core */}
-          <div className="absolute z-20 flex flex-col items-center justify-center bg-white dark:bg-zinc-900 border-4 border-purple-100 dark:border-purple-900/30 rounded-full w-36 h-36 shadow-xl">
-            <div className="text-3xl font-black text-purple-600 dark:text-purple-400">
-              XP
-            </div>
-            <div className="text-[10px] uppercase tracking-widest text-zinc-400 mt-1">
-              Looping Process
-            </div>
-            <RefreshCw className="w-6 h-6 text-purple-400 mt-2 animate-spin-slow" />
-          </div>
+        {/* Right Column: XP Cycle Diagram - Proportional Redesign */}
+        <div className="flex items-center justify-center h-full max-h-[450px]">
+          <motion.div
+            className="relative w-[340px] h-[340px] aspect-square shrink-0"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.5, type: "spring" }}
+          >
+            {/* Dashed Orbit Ring */}
+            <div className="absolute inset-0 rounded-full border-2 border-dashed border-zinc-200 dark:border-zinc-800" />
 
-          {/* Orbiting Container */}
-          <div className="absolute w-[350px] h-[350px]">
-            {/* Dashed Ring */}
+            {/* Central XP Core */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center bg-white dark:bg-zinc-900 border-4 border-purple-100 dark:border-purple-900/30 rounded-full w-32 h-32 shadow-2xl">
+              <div className="text-4xl font-black text-purple-600 dark:text-purple-400">
+                XP
+              </div>
+              <div className="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mt-1">
+                Cycle
+              </div>
+              <RefreshCw className="w-5 h-5 text-purple-400 mt-2 animate-spin-slow opacity-70" />
+            </div>
+
+            {/* Process Nodes Container - Static */}
+            <div className="absolute inset-0">
+              {steps.map((step, index) => {
+                // Calculate position based on angle
+                const radius = 170;
+                const x = Math.cos((step.angle * Math.PI) / 180) * radius;
+                const y = Math.sin((step.angle * Math.PI) / 180) * radius;
+
+                return (
+                  <motion.div
+                    key={step.label}
+                    className="absolute top-1/2 left-1/2 -mt-10 -ml-10 w-20 h-20 z-30"
+                    style={{
+                      x,
+                      y,
+                    }}
+                    initial={{ opacity: 0, scale: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      delay: 0.8 + index * 0.4, // Sequential appearance
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                    }}
+                  >
+                    <div className="flex flex-col items-center justify-center w-full h-full">
+                      <motion.div
+                        className={`w-12 h-12 rounded-2xl ${step.color} shadow-lg flex items-center justify-center text-white mb-2 border-2 border-white dark:border-zinc-900 relative`}
+                        animate={{
+                          scale: [1, 1.1, 1],
+                          boxShadow: [
+                            "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                            "0 0 15px rgba(168, 85, 247, 0.5)",
+                            "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                          ],
+                        }}
+                        transition={{
+                          duration: 2,
+                          delay: 3 + index * 2, // Highlight loop after appearance
+                          repeat: Infinity,
+                          repeatDelay: 8, // Wait for other nodes
+                        }}
+                      >
+                        {step.icon}
+                      </motion.div>
+                      <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300 bg-white/80 dark:bg-zinc-900/80 px-2 py-0.5 rounded-full backdrop-blur-sm border border-zinc-100 dark:border-zinc-800">
+                        {step.label}
+                      </span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Connecting Arrows (SVG) */}
             <svg
-              className="absolute inset-0 w-full h-full pointer-events-none opacity-20 dark:opacity-40 text-zinc-400"
-              viewBox="0 0 100 100"
+              className="absolute inset-0 w-full h-full pointer-events-none opacity-30 text-zinc-400 dark:text-zinc-600"
+              viewBox="0 0 340 340"
+              fill="none"
             >
+              <defs>
+                <marker
+                  id="arrowhead"
+                  markerWidth="10"
+                  markerHeight="7"
+                  refX="9"
+                  refY="3.5"
+                  orient="auto"
+                >
+                  <polygon points="0 0, 10 3.5, 0 7" fill="currentColor" />
+                </marker>
+              </defs>
+              {/* Draw curved paths between nodes */}
+              {/* This is a simplified visual representation of flow */}
               <circle
-                cx="50"
-                cy="50"
-                r="48"
-                fill="none"
+                cx="170"
+                cy="170"
+                r="170"
                 stroke="currentColor"
-                strokeWidth="1.5"
-                strokeDasharray="4 4"
+                strokeWidth="1"
+                strokeDasharray="8 8"
+                opacity="0.5"
               />
             </svg>
-
-            {/* Looping Satellite (The Process Flow) */}
-            <motion.div
-              className="absolute top-0 left-0 w-full h-full pointer-events-none"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            >
-              <div className="absolute top-[2%] left-1/2 w-4 h-4 bg-purple-500 rounded-full shadow-[0_0_15px_rgba(168,85,247,0.8)] -translate-x-1/2" />
-            </motion.div>
-
-            {/* Nodes - Fixed Rotation but positioned on ring */}
-            {/* 1. Planning (Top Left - 225deg) */}
-            <CycleNode
-              angle={225}
-              color="bg-blue-500"
-              icon={<Users className="w-6 h-6 text-white" />}
-              label="Planning"
-              delay={0}
-            />
-
-            {/* 2. Design (Top Right - 315deg) */}
-            <CycleNode
-              angle={315}
-              color="bg-indigo-500"
-              icon={<PenTool className="w-6 h-6 text-white" />}
-              label="Design"
-              delay={2}
-            />
-
-            {/* 3. Coding (Bottom Right - 45deg) */}
-            <CycleNode
-              angle={45}
-              color="bg-pink-500"
-              icon={<Code2 className="w-6 h-6 text-white" />}
-              label="Coding"
-              delay={4}
-            />
-
-            {/* 4. Testing (Bottom Left - 135deg) */}
-            <CycleNode
-              angle={135}
-              color="bg-orange-500"
-              icon={<TestTube2 className="w-6 h-6 text-white" />}
-              label="Testing"
-              delay={6}
-            />
-          </div>
-
-          {/* Release Escape Velocity */}
-          <motion.div
-            className="absolute -bottom-8 lg:-right-8 lg:bottom-auto lg:top-1/2 z-30"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.2, duration: 0.5 }}
-          >
-            <div className="flex flex-col lg:flex-row items-center gap-2">
-              <div className="h-4 lg:h-1 w-1 lg:w-16 bg-gradient-to-b lg:bg-gradient-to-r from-transparent to-green-500 rounded-full"></div>
-              <div className="bg-green-500 text-white px-5 py-3 rounded-xl shadow-lg flex items-center gap-3">
-                <Rocket className="w-6 h-6" />
-                <span className="font-bold text-sm uppercase tracking-wide">
-                  Release
-                </span>
-              </div>
-            </div>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
@@ -232,38 +273,5 @@ function StandardItem({
         </p>
       </div>
     </motion.div>
-  );
-}
-
-function CycleNode({
-  angle,
-  color,
-  icon,
-  label,
-  delay,
-}: {
-  angle: number;
-  color: string;
-  icon: React.ReactNode;
-  label: string;
-  delay: number;
-}) {
-  // 160px radius to match container roughly
-  return (
-    <div
-      className="absolute top-1/2 left-1/2 w-24 h-24 -ml-12 -mt-12"
-      style={{
-        transform: `rotate(${angle}deg) translate(130px) rotate(-${angle}deg)`,
-      }}
-    >
-      <div
-        className={`flex flex-col items-center justify-center w-full h-full rounded-full shadow-lg border-4 border-white dark:border-zinc-950 ${color} text-white`}
-      >
-        {icon}
-        <span className="text-[10px] font-bold mt-1 uppercase tracking-wider">
-          {label}
-        </span>
-      </div>
-    </div>
   );
 }

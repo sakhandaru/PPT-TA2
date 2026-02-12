@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
 
 export default function Slide06_SystemModeling() {
   return (
-    <div className="w-full h-full p-8 md:p-12 flex flex-col overflow-hidden">
+    <div className="w-full h-full px-6 pt-6 pb-16 md:px-8 md:pt-8 md:pb-16 flex flex-col overflow-hidden">
       <motion.div
         className="shrink-0 mb-6"
         initial={{ y: -20, opacity: 0 }}
@@ -44,7 +44,7 @@ export default function Slide06_SystemModeling() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 flex-1 min-h-0">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 flex-1 min-h-0">
         {/* Left Column: Use Case Diagram (Span 5) */}
         <div className="xl:col-span-5 flex flex-col h-full">
           <ModelSection
@@ -132,7 +132,7 @@ function UseCaseDiagram() {
         <div className="w-16 h-16 bg-white dark:bg-slate-200 rounded-full flex items-center justify-center shadow-md border-2 border-slate-300">
           <User className="w-10 h-10 text-slate-700" />
         </div>
-        <span className="font-bold text-sm text-center bg-card/80 backdrop-blur px-2 py-1 rounded border border-border">
+        <span className="font-bold text-xs text-center bg-card/80 backdrop-blur px-2 py-1 rounded border border-border">
           Pengunjung
           <br />
           Website
@@ -149,7 +149,7 @@ function UseCaseDiagram() {
               top: "50%",
               width: "100%",
               transformOrigin: "left center",
-              transform: `translateY(-50%) rotate(${(i - 2) * 15}deg)`, // Fan out lines
+              transform: `translateY(-50%) rotate(${(i - 2) * 10}deg)`, // Fan out lines
             }}
             initial={{ width: 0, opacity: 0 }}
             animate={{ width: "100%", opacity: 1 }}
@@ -187,7 +187,7 @@ function UseCaseNode({ text, delay }: { text: string; delay: number }) {
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay }}
     >
-      <span className="text-xs md:text-sm font-medium text-slate-700 dark:text-slate-200">
+      <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
         {text}
       </span>
     </motion.div>
@@ -270,9 +270,9 @@ function SequenceDiagram() {
   ];
 
   return (
-    <div className="w-full h-full flex flex-col relative text-[10px] md:text-xs">
+    <div className="w-full h-full flex flex-col relative text-xs md:text-sm">
       {/* Lifeline Headers */}
-      <div className="flex justify-between px-2 md:px-8 mb-4 relative z-20">
+      <div className="flex justify-between px-2 md:px-4 mb-2 relative z-20">
         {lifelines.map((line, i) => (
           <motion.div
             key={line.id}
@@ -289,7 +289,7 @@ function SequenceDiagram() {
                 <div className="w-8 h-8 mb-1 text-pink-500 dark:text-pink-400">
                   <StickFigure />
                 </div>
-                <span className="font-bold text-xs text-center">
+                <span className="font-bold text-sm text-center">
                   {line.label}
                 </span>
               </div>
@@ -323,7 +323,7 @@ function SequenceDiagram() {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 flex flex-col justify-evenly relative z-10 px-2 py-2">
+      <div className="flex-1 flex flex-col justify-evenly relative z-10 px-2 py-1">
         {messages.map((msg, i) => (
           <SequenceMessage
             key={i}
@@ -354,14 +354,14 @@ function SequenceDiagram() {
                 <div className="w-6 h-6 mb-1 text-pink-500 dark:text-pink-400 opacity-50">
                   <StickFigure />
                 </div>
-                <span className="font-bold text-[9px] bg-pink-100 dark:bg-pink-900/30 px-2 rounded text-pink-700 dark:text-pink-300">
+                <span className="font-bold text-[10px] bg-pink-100 dark:bg-pink-900/30 px-2 rounded text-pink-700 dark:text-pink-300">
                   {line.label}
                 </span>
               </div>
             ) : (
               <div
                 className={cn(
-                  "px-2 py-1 rounded border w-full text-[9px] font-bold bg-background opacity-80",
+                  "px-2 py-1 rounded border w-full text-[10px] font-bold bg-background opacity-80",
                   line.color,
                 )}
               >
@@ -436,10 +436,10 @@ function SequenceMessage({
       >
         {/* Label */}
         <div className="absolute -top-4 flex items-center gap-1.5 whitespace-nowrap z-10 bg-background/50 backdrop-blur-[1px] px-1 rounded">
-          <span className="flex items-center justify-center w-3.5 h-3.5 bg-black text-white dark:bg-white dark:text-black rounded-full text-[8px] font-bold shadow-sm">
+          <span className="flex items-center justify-center w-3.5 h-3.5 bg-black text-white dark:bg-white dark:text-black rounded-full text-[10px] font-bold shadow-sm">
             {id}
           </span>
-          <span className="text-[9px] md:text-[10px] font-medium text-slate-700 dark:text-slate-200">
+          <span className="text-xs font-medium text-slate-700 dark:text-slate-200">
             {text}
           </span>
         </div>

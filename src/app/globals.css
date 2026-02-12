@@ -46,6 +46,10 @@
 }
 
 :root {
+  /* Projector Optimization: Base Scale Multiplier */
+  font-size: 125%; /* 1rem = 20px instead of 16px */
+  font-weight: 500; /* Medium weight for better definition on light bleed */
+
   /* Apple-Style Palette */
   --background: oklch(0.98 0 0); /* #F5F5F7 - Off-white background */
   --foreground: oklch(0.145 0 0); /* #1D1D1F - Almost black text */

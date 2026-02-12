@@ -14,14 +14,16 @@ import {
   FileCode,
   Settings,
   Layout,
+  Search,
+  ArrowRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Slide09_UIOptimization() {
   return (
-    <div className="w-full h-full p-8 md:p-12 flex flex-col overflow-hidden">
+    <div className="w-full h-full px-6 pt-6 pb-20 flex flex-col overflow-hidden gap-4">
       <motion.div
-        className="shrink-0 mb-6"
+        className="shrink-0 mb-4"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.1 }}
@@ -43,9 +45,9 @@ export default function Slide09_UIOptimization() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 flex-1 min-h-0">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 flex-1 min-h-0">
         {/* Left Column: Explanations */}
-        <div className="flex flex-col gap-6 h-full pr-2">
+        <div className="flex flex-col gap-4 h-full pr-2">
           {/* Design System Section */}
           <DetailSection
             title="Desain Berbasis Komponen"
@@ -63,11 +65,8 @@ export default function Slide09_UIOptimization() {
                     Atomic Design Hierarchy
                   </span>
                   <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-                    Metodologi desain yang memecah tampilan kompleks menjadi
-                    komponen-komponen kecil (atom) yang digabungkan kembali
-                    menjadi fitur utuh (organisme). Menjamin konsistensi visual
-                    dan kemudahan perawatan kode (maintainability) jangka
-                    panjang.
+                    Memecah UI kompleks menjadi komponen kecil (Atom &rarr;
+                    Organisme). Konsistensi visual & mudah dimaintain.
                   </p>
                 </div>
               </li>
@@ -80,10 +79,8 @@ export default function Slide09_UIOptimization() {
                     Utility-First CSS (Tailwind)
                   </span>
                   <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
-                    Pendekatan styling modern yang mempercepat pengembangan UI
-                    tanpa menulis file CSS manual. Menghasilkan ukuran file CSS
-                    akhir yang sangat kecil karena hanya menyertakan style yang
-                    benar-benar digunakan.
+                    Styling modern tanpa file CSS manual. Ukuran file akhir
+                    sangat kecil (hanya class yang dipakai).
                   </p>
                 </div>
               </li>
@@ -100,20 +97,20 @@ export default function Slide09_UIOptimization() {
             <div className="flex flex-col gap-3 mt-1">
               <OptCard
                 icon={<FileImage className="w-4 h-4" />}
-                title="Next.js Image Optimization"
-                desc="Otomatis mengkonversi gambar ke format modern (WebP/AVIF) dan menyesuaikan ukuran (resize) sesuai perangkat pengguna. Menghemat bandwidth hingga 80% dibanding format JPG/PNG biasa."
+                title="Image Optimization"
+                desc="Auto-convert ke WebP/AVIF & resize sesuai device. Hemat bandwidth s/d 80%."
                 color="bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400"
               />
               <OptCard
                 icon={<PackageOpen className="w-4 h-4" />}
-                title="Automatic Code Splitting"
-                desc="Memecah kode JavaScript menjadi bagian-bagian kecil per halaman. Pengguna hanya mengunduh kode yang diperlukan untuk halaman yang sedang dibuka, membuat loading awal jauh lebih cepat."
+                title="Code Splitting"
+                desc="Load JS hanya yang diperlukan per halaman. Initial load jauh lebih cepat."
                 color="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400"
               />
               <OptCard
                 icon={<Box className="w-4 h-4" />}
-                title="Tree Shaking Algorithm"
-                desc="Secara cerdas mendeteksi dan membuang kode atau fungsi (dead code) yang tidak pernah digunakan dalam aplikasi, memastikan ukuran aplikasi sekecil mungkin."
+                title="Tree Shaking"
+                desc="Eliminasi 'dead code' (kode tak terpakai) untuk bundle size minimal."
                 color="bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400"
               />
             </div>
@@ -121,10 +118,10 @@ export default function Slide09_UIOptimization() {
         </div>
 
         {/* Right Column: Visuals */}
-        <div className="flex flex-col gap-6 h-full">
+        <div className="flex flex-col gap-4 h-full">
           {/* Atomic Design Animation */}
-          <div className="flex-1 bg-muted/20 border border-border rounded-2xl p-6 relative overflow-hidden group">
-            <div className="absolute top-4 left-4 z-10">
+          <div className="flex-1 bg-muted/20 border border-border rounded-xl p-4 relative overflow-hidden group min-h-0">
+            <div className="absolute top-2 left-4 z-10">
               <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
                 Atomic Design Hierarchy
               </h4>
@@ -140,7 +137,7 @@ export default function Slide09_UIOptimization() {
 
           {/* Tailwind Pipeline Visualizer (Gambar 10 Replacement) */}
           <motion.div
-            className="flex-1 bg-muted/20 border border-border rounded-2xl flex flex-col items-center justify-center p-4 relative overflow-hidden"
+            className="flex-1 bg-muted/20 border border-border rounded-xl flex flex-col items-center justify-center p-3 relative overflow-hidden"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
@@ -175,7 +172,7 @@ function DetailSection({
   return (
     <motion.div
       className={cn(
-        "flex flex-col gap-3 p-4 bg-card border border-border/50 rounded-xl shadow-sm",
+        "flex flex-col gap-2 p-3 bg-card border border-border/50 rounded-xl shadow-sm",
         className,
       )}
       initial={{ x: -20, opacity: 0 }}
@@ -203,7 +200,7 @@ function OptCard({
   color: string;
 }) {
   return (
-    <div className="flex items-start gap-4 p-4 rounded-lg bg-muted/30 border border-transparent hover:border-border transition-colors">
+    <div className="flex items-start gap-3 p-2.5 rounded-lg bg-muted/30 border border-transparent hover:border-border transition-colors">
       <div className={cn("p-2.5 rounded-md shrink-0", color)}>{icon}</div>
       <div>
         <h4 className="font-bold text-base mb-1.5">{title}</h4>
@@ -214,141 +211,146 @@ function OptCard({
 }
 
 function AtomicDesignVisualizer() {
-  const [step, setStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
 
-  // Cycle through steps: 0=Atoms, 1=Molecules, 2=Organisms
   useEffect(() => {
     const interval = setInterval(() => {
-      setStep((prev) => (prev + 1) % 3);
-    }, 3000); // Slower interval for better comprehension
+      setActiveStep((prev) => (prev + 1) % 3);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center p-4">
-      {/* Visualization Container */}
-      <div className="relative w-full max-w-[280px] h-48 flex items-center justify-center">
-        {/* ATOMS LAYER: Individual Elements */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          {/* Atom 1: Avatar Image */}
-          <motion.div
-            className="absolute w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-sm z-20"
-            animate={{
-              top: step === 0 ? "20%" : step >= 1 ? "30%" : "20%",
-              left: step === 0 ? "20%" : step >= 1 ? "15%" : "20%",
-              scale: step === 0 ? 1 : 0.8,
-            }}
-          >
-            <div className="w-6 h-6 bg-blue-200 rounded-full opacity-50" />
-            {step === 0 && <Label text="Atom (Image)" pos="top" />}
-          </motion.div>
-
-          {/* Atom 2: Title Text */}
-          <motion.div
-            className="absolute w-32 h-4 bg-indigo-500 rounded-md z-20"
-            animate={{
-              top: step === 0 ? "20%" : step >= 1 ? "30%" : "20%",
-              left: step === 0 ? "60%" : step >= 1 ? "35%" : "60%",
-              scale: step === 0 ? 1 : 0.8,
-            }}
-          >
-            {step === 0 && <Label text="Atom (Title)" pos="top" />}
-          </motion.div>
-
-          {/* Atom 3: Subtitle Text */}
-          <motion.div
-            className="absolute w-20 h-3 bg-indigo-300 rounded-md z-20"
-            animate={{
-              top: step === 0 ? "35%" : step >= 1 ? "42%" : "35%",
-              left: step === 0 ? "60%" : step >= 1 ? "35%" : "60%",
-              scale: step === 0 ? 1 : 0.8,
-            }}
-          >
-            {step === 0 && <Label text="Atom (Text)" pos="bottom" />}
-          </motion.div>
-
-          {/* Atom 4: Button */}
-          <motion.div
-            className="absolute w-24 h-8 bg-purple-500 rounded-lg flex items-center justify-center z-20"
-            animate={{
-              bottom: step === 0 ? "15%" : step === 1 ? "20%" : "15%",
-              left: step === 0 ? "40%" : step === 1 ? "60%" : "50%",
-              x: step === 2 ? "-50%" : 0,
-              scale: step === 0 ? 1 : 0.8,
-            }}
-          >
-            <div className="w-12 h-2 bg-purple-200 rounded-sm opacity-50" />
-            {step === 0 && <Label text="Atom (Button)" pos="bottom" />}
-          </motion.div>
-        </div>
-
-        {/* MOLECULES LAYER: Groups */}
+    <div className="w-full h-full flex flex-col p-4 gap-2">
+      <div className="flex-1 grid grid-cols-3 gap-4">
+        {/* API: Atoms */}
         <motion.div
-          className="absolute z-10 border-2 border-dashed border-indigo-400 rounded-xl bg-indigo-50/50 dark:bg-indigo-900/20"
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: step >= 1 ? 1 : 0,
-            width: step >= 1 ? "220px" : "0px",
-            height: step >= 1 ? "80px" : "0px",
-            top: "20%",
-            left: "10%",
-          }}
-        >
-          {step === 1 && (
-            <Label
-              text="Molecule (Card Header)"
-              pos="top"
-              color="text-indigo-600"
-            />
+          className={cn(
+            "flex flex-col gap-2 p-2 rounded-lg border transition-all duration-500",
+            activeStep === 0
+              ? "bg-blue-50 dark:bg-blue-900/30 border-blue-200 dark:border-blue-800 scale-105 shadow-md z-10"
+              : "bg-muted/10 border-transparent opacity-60 scale-95",
           )}
-        </motion.div>
-
-        <motion.div
-          className="absolute z-10 border-2 border-dashed border-purple-400 rounded-xl bg-purple-50/50 dark:bg-purple-900/20"
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: step === 1 ? 1 : 0,
-            width: step === 1 ? "120px" : "0px",
-            height: step === 1 ? "50px" : "0px",
-            bottom: "10%",
-            right: "5%",
-          }}
         >
-          {step === 1 && (
-            <Label
-              text="Molecule (Action)"
-              pos="bottom"
-              color="text-purple-600"
-            />
-          )}
-        </motion.div>
-
-        {/* ORGANISMS LAYER: Full Component */}
-        <motion.div
-          className="absolute inset-0 z-0 bg-card border-2 border-emerald-500 shadow-xl rounded-2xl"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{
-            opacity: step === 2 ? 1 : 0,
-            scale: step === 2 ? 1 : 0.9,
-          }}
-        >
-          {step === 2 && (
-            <div className="absolute -top-8 left-0 right-0 text-center">
-              <span className="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest border border-emerald-200 shadow-sm">
-                Organism (User Card)
-              </span>
+          <div className="text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 text-center mb-1">
+            Atoms
+          </div>
+          <div className="flex-1 flex flex-col items-center justify-center gap-3">
+            <div className="p-1.5 bg-background rounded shadow-sm border">
+              <Search className="w-3 h-3 text-muted-foreground" />
             </div>
+            <div className="h-6 w-full bg-background rounded border px-2 flex items-center">
+              <span className="text-[8px] text-muted-foreground">Input...</span>
+            </div>
+            <div className="h-6 px-3 bg-blue-500 rounded flex items-center justify-center">
+              <span className="text-[8px] font-bold text-white">Button</span>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* API: Molecules */}
+        <motion.div
+          className={cn(
+            "flex flex-col gap-2 p-2 rounded-lg border transition-all duration-500",
+            activeStep === 1
+              ? "bg-indigo-50 dark:bg-indigo-900/30 border-indigo-200 dark:border-indigo-800 scale-105 shadow-md z-10"
+              : "bg-muted/10 border-transparent opacity-60 scale-95",
           )}
+        >
+          <div className="text-[10px] font-bold uppercase tracking-wider text-indigo-600 dark:text-indigo-400 text-center mb-1">
+            Molecules
+          </div>
+          <div className="flex-1 flex flex-col items-center justify-center">
+            <div className="w-full bg-background p-2 rounded-lg border shadow-sm flex gap-1 items-center">
+              <Search className="w-3 h-3 text-muted-foreground" />
+              <div className="h-5 flex-1 bg-muted/20 rounded border border-transparent px-1 flex items-center">
+                <span className="text-[8px] text-muted-foreground">
+                  Search...
+                </span>
+              </div>
+              <div className="h-5 px-2 bg-blue-500 rounded flex items-center">
+                <span className="text-[8px] font-bold text-white">Go</span>
+              </div>
+            </div>
+            <p className="text-[8px] text-center text-muted-foreground mt-2">
+              (Search Bar Component)
+            </p>
+          </div>
+        </motion.div>
+
+        {/* API: Organisms */}
+        <motion.div
+          className={cn(
+            "flex flex-col gap-2 p-2 rounded-lg border transition-all duration-500",
+            activeStep === 2
+              ? "bg-emerald-50 dark:bg-emerald-900/30 border-emerald-200 dark:border-emerald-800 scale-105 shadow-md z-10"
+              : "bg-muted/10 border-transparent opacity-60 scale-95",
+          )}
+        >
+          <div className="text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 text-center mb-1">
+            Organisms
+          </div>
+          <div className="flex-1 flex flex-col items-center justify-center w-full">
+            <div className="w-full bg-background rounded-lg border shadow-sm overflow-hidden">
+              {/* Header Organism */}
+              <div className="h-8 border-b flex items-center px-2 justify-between bg-muted/10">
+                <div className="w-4 h-4 rounded-full bg-emerald-500/20" />
+                <div className="flex gap-1">
+                  <div className="w-8 h-1.5 rounded-full bg-muted" />
+                  <div className="w-8 h-1.5 rounded-full bg-muted" />
+                </div>
+              </div>
+              <div className="p-2 gap-2 flex flex-col">
+                <div className="w-full h-8 bg-muted/10 rounded border border-dashed flex items-center justify-center">
+                  <span className="text-[8px] text-muted-foreground">
+                    Search Molecule
+                  </span>
+                </div>
+                <div className="w-full h-12 bg-muted/5 rounded" />
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
 
-      {/* Step Indicators */}
-      <div className="flex gap-2 mt-8">
-        <StepDot active={step === 0} label="Atoms" color="bg-blue-500" />
-        <div className="w-8 h-px bg-border self-center" />
-        <StepDot active={step === 1} label="Molecules" color="bg-indigo-500" />
-        <div className="w-8 h-px bg-border self-center" />
-        <StepDot active={step === 2} label="Organisms" color="bg-emerald-500" />
+      {/* Flow Indicator with Active State */}
+      <div className="flex items-center justify-center gap-2 text-[9px] text-muted-foreground mt-1">
+        <span
+          className={cn(
+            "font-medium transition-colors",
+            activeStep === 0 && "text-blue-600 font-bold",
+          )}
+        >
+          Komponen Kecil
+        </span>
+        <ArrowRight
+          className={cn(
+            "w-3 h-3 transition-opacity",
+            activeStep === 0 ? "opacity-100" : "opacity-30",
+          )}
+        />
+        <span
+          className={cn(
+            "font-medium transition-colors",
+            activeStep === 1 && "text-indigo-600 font-bold",
+          )}
+        >
+          Komponen Sedang
+        </span>
+        <ArrowRight
+          className={cn(
+            "w-3 h-3 transition-opacity",
+            activeStep === 1 ? "opacity-100" : "opacity-30",
+          )}
+        />
+        <span
+          className={cn(
+            "font-medium transition-colors",
+            activeStep === 2 && "text-emerald-600 font-bold",
+          )}
+        >
+          Fitur Utuh
+        </span>
       </div>
     </div>
   );
@@ -356,7 +358,7 @@ function AtomicDesignVisualizer() {
 
 function TailwindPipelineVisualizer() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center p-4">
+    <div className="w-full h-full flex flex-col items-center justify-center p-2">
       <div className="mb-6 w-full text-center">
         <h4 className="text-xs font-bold uppercase tracking-widest text-muted-foreground/80 border-b border-border/50 pb-2 inline-block px-4">
           Tailwind CSS Processing Pipeline

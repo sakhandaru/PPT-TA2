@@ -71,7 +71,7 @@ export default function Slide13_ThankYou() {
             transition={{ delay: 0.5 }}
           >
             <h3 className="text-sm font-mono uppercase tracking-widest text-zinc-400 mb-8">
-              Dewan Penguji
+              Dewan Penguji & Pembimbing
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <ExaminerCard role="Ketua" name="Fauzi Adi Rafrastara, M.Cs" />

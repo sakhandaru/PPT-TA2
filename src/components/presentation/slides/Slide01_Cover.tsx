@@ -37,7 +37,7 @@ export default function Slide01_Cover() {
           </span>
         </div>
         <div className="text-right">
-          <p className="text-xs text-zinc-500 font-mono">SEMESTER GENAP</p>
+          <p className="text-xs text-zinc-500 font-mono">SEMESTER GANJIL</p>
           <p className="text-xs text-zinc-500 font-mono">2026</p>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function Slide01_Cover() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight uppercase font-display"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight uppercase font-display"
           >
             Penerapan Refaktorisasi
             <br />

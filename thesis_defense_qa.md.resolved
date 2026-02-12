@@ -1,0 +1,241 @@
+# Panduan Tanya Jawab Sidang Skripsi (Thesis Defense Q&A)
+
+Dokumen ini disusun berdasarkan profil 3 penguji Anda:
+
+1.  **1x Penguji Teknis:** Fokus pada kode, arsitektur, dan "how it works".
+2.  **2x Penguji Dampak:** Fokus pada kegunaan, validasi, business value, dan "so what?".
+
+---
+
+## ⚡️ RUMUS JAWABAN (The Golden Formula)
+
+Gunakan pola ini untuk menjawab pertanyaan APAPUN agar terdengar cerdas dan terstruktur.
+**Rumus: "A - P - B - D"**
+
+1.  **A (Apresiasi):** Terima pertanyaan dengan tenang. Jangan defensif.
+    *   *"Pertanyaan menarik, Pak..."*
+    *   *"Terima kasih masukannya..."*
+2.  **P (Poin Utama):** Jawab langsung *to the point* (Ya/Tidak/Karena X).
+    *   *"Saya memilih Next.js karena alasan SEO."*
+3.  **B (Bukti/Konteks):** Berikan alasan teknis atau data pendukung.
+    *   *"Google sulit mengindex website React biasa, tapi sangat mudah membaca Next.js (SSR)."*
+4.  **D (Dampak):** Tutup dengan manfaat akhir bagi bisnis/user.
+    *   *"Akibatnya, berita TVKU jadi lebih sering muncul di pencarian Google."*
+
+**Contoh Penerapan:**
+Q: *"Kenapa ganti UI-nya?"*
+A: *"Betul Pak (A), saya merapikan UI-nya (P). Sebelumnya user sering salah klik karena tombol terlalu kecil (B). Dengan Atomic Design, tombol jadi konsisten dan booking naik 20% (D)."*
+
+---
+
+## A. Penguji Tipe "Dampak & Kegunaan" (Dominan: 2 Orang)
+
+_Tip: Jawaban harus nyata, membumi, dan fokus pada hasil akhir (outcome), bukan proses (output)._
+
+### Q1: "Cuma Refactoring? User kan nggak lihat bedanya. Apa gunanya?"
+
+**Jawaban Strategis:**
+"Betul Pak/Bu, secara visual memang tujuannya mempertahankan yang sudah ada. Tapi 'gunanya' sangat dirasakan oleh user dan bisnis dalam 3 hal:
+
+1.  **Kecepatan (Performance):** Slide 10 membuktikan loading time (LCP) turun dari 19 detik ke 1,2 detik. User tidak kabur menunggu loading.
+2.  **Kestabilan:** Bug visual jauh berkurang karena arsitekturnya lebih solid.
+3.  **Pengembangan Fitur Masa Depan:** Sebelum direfactor, nambah 1 fitur butuh 1 minggu karena kode berantakan. Sekarang bisa 1-2 hari. Ini dampak nyata buat keberlanjutan aplikasi TVKU."
+
+### Q2: "Kenapa riset ini penting? Kok nggak bikin aplikasi baru aja?"
+
+**Jawaban Strategis:**
+"Bikin baru dari nol seringkali membunuh produk yang sudah berjalan (rewrite trap). Riset ini penting karena menunjukkan bagaimana **menyelamatkan aset digital yang sudah ada** (Software Rejuvenation).
+Ini masalah riil di industri: banyak aplikasi lama yang 'sakit' tapi sayang dibuang. Metode refactoring yang saya tawarkan adalah solusinya."
+
+### Q3: "Apa buktinya kalau performanya beneran naik? Jangan-jangan cuma perasaan doang."
+
+**Jawaban Strategis:**
+(Langsung buka **Slide 10**)
+"Saya menggunakan standar industri **Google Lighthouse**, bukan asumsi pribadi.
+Data menunjukkan:
+
+- **LCP (Loading Utama):** 93% lebih cepat.
+- **CLS (Kestabilan Visual):** 98% lebih stabil.
+  Semua terukur secara kuantitatif sebelum dan sesudah refactoring."
+
+### Q4: "Apakah ini beneran bisa dipakai di industri, atau cuma teori kampus?"
+
+**Jawaban Strategis:**
+"Metode yang saya pakai (Clean Architecture, Atomic Design, TanStack Query) adalah **standar de facto** di perusahaan teknologi besar (Unicorn). Jadi riset ini justru membawa standar industri kualitas tinggi ke dalam lingkungan pengembangan TVKU."
+
+### Q9: "Kalau developernya ganti, apakah orang baru bisa langsung paham?"
+
+**Jawaban Strategis:**
+"Justru itu kekuatan utama Atomic Design, Pak. Struktur folder sudah sangat jelas: `components/atoms`, `molecules`, `organisms`.
+Developer baru tidak perlu menebak-nebak di mana kode tombol atau header disimpan. Dokumentasi arsitektur ini ('Living Styleguide') membuat proses _onboarding_ tim baru jadi jauh lebih cepat dibanding kode lama yang tercampur aduk."
+
+### Q10: "Riset ini kan cuma 'dandanin' tampilan. Apa efeknya ke biaya operasional (Cost)?"
+
+**Jawaban Strategis:**
+"Efeknya langsung ke efisiensi server dan bandwidth, Pak.
+Di Slide 9 saya jelaskan tentang **Image Optimization** dan **Code Splitting**. File yang dikirim ke user jauh lebih kecil (turun ~60-80%).
+Ini artinya TVKU bisa menghemat biaya bandwidth server secara signifikan jika trafik sedang tinggi. Jadi bukan cuma soal 'dandanin', tapi efisiensi resources."
+
+---
+
+## B. Penguji Tipe "Teknis" (1 Orang)
+
+_Tip: Jawaban harus presisi, gunakan istilah teknis yang tepat (Slide 8 & 9), dan tunjukkan Anda menguasai kode._
+
+### Q5: "Kenapa harus pakai Atomic Design? Kan malah jadi banyak file-nya."
+
+**Jawaban Strategis:**
+(Referensi **Slide 9**)
+"Memang di awal filenya lebih banyak, tapi ini investasi jangka panjang, Pak.
+Tanpa Atomic Design, kita sering _copy-paste_ kode tombol/input yang sama di 10 tempat berbeda. Kalau desain tombol berubah, kita harus edit 10 file.
+Dengan Atomic Design, saya cukup ubah 1 file **Atom**, dan perubahan itu otomatis terefleksi di seluruh aplikasi. Ini mencegah inkonsistensi UI yang sering terjadi di kode legacy."
+
+### Q6: "Kenapa pakai TanStack Query? Kenapa nggak pakai `useEffect` biasa atau Redux?"
+
+**Jawaban Strategis:**
+(Referensi **Slide 8**)
+"Saya memisahkan **Server State** (data dari API) dan **Client State** (ui interaction).
+
+- **`useEffect`:** Rawan _race condition_ (data balapan) dan _memory leak_ kalau komponen di-unmount.
+- **Redux:** Terlalu banyak boilerplate (kode berulang) untuk sekedar fetch data.
+- **TanStack Query:** Menangani caching, background refetching, dan deduping otomatis. Hasilnya aplikasi terasa jauh lebih responsif dan ringan."
+
+### Q7: "Jelaskan alur data (Data Flow) di arsitektur barumu."
+
+**Jawaban Strategis:**
+"Saya menggunakan pendekatan **Unidirectional Data Flow** (Satu Arah):
+
+1.  **Service/Repostory Layer:** Fetch data mentah dari API.
+2.  **Domain/Hooks Layer (React Query):** Mengelola caching dan state logic.
+3.  **UI Components:** Hanya menerima data matang untuk ditampilkan.
+    Komponen UI tidak boleh tahu cara fetch API (Separation of Concerns). Ini membuat kode UI sangat bersih dan mudah dites."
+
+### Q8: "Bagaimana kamu menjamin refactoring ini nggak ngerusak fitur lama?"
+
+**Jawaban Strategis:**
+"Saya melakukan **Incremental Refactoring** (sedikit demi sedikit) dan **Parallel Run** saat development. Setiap komponen yang di-refactor dites fungsionalitasnya dibandingkan dengan versi lama. Selain itu, penggunaan TypeScript sangat membantu menangkap error tipe data sebelum kode dijalankan."
+
+### Q11: "Kenapa memilih Next.js dibanding React biasa (CRA/Vite)? Bukannya lebih berat?"
+
+**Jawaban Strategis:**
+"Untuk kasus TVKU yang merupakan portal media, **SEO (Search Engine Optimization)** adalah harga mati.
+React biasa (Client Side Rendering) buruk untuk SEO karena bot Google susah membaca kontennya.
+Next.js memiliki fitur **Server Side Rendering (SSR)** dan **Static Site Generation (SSG)**. Ini menjamin artikel-artikel TVKU mudah terindex Google dan muncul di halaman pertama pencarian. Jadi 'berat' sedikit di awal, tapi profit di trafik jangka panjang."
+
+### Q12: "Bagaimana kamu menangani 'Prop Drilling' di arsitektur ini?"
+
+**Jawaban Strategis:**
+"Saya meminimalisir Prop Drilling dengan kompisisi komponen yang baik (Atomic Design).
+Jika ada data yang dibutuhkan oleh banyak komponen sekaligus (seperti User Session atau Theme), saya menggunakan **Context API** atau **Zustand** untuk global state management yang ringan, bukan mengoper props sampai 5 level ke bawah."
+
+### Q13: "Apakah kamu menulis Unit Test?"
+
+**Jawaban Strategis:**
+"Fokus riset ini adalah arsitektur dan performa UI (System Refactoring). Namun, struktur Atomic Design ini sebenarnya **sangat testable**.
+Karena komponen Atom dan Molekul bersifat murni (Pure Component), kita bisa dengan mudah membuat Unit Test (menggunakan Jest/Vitest) untuk memastikan input X selalu menghasilkan output Y, tanpa ketergantungan API yang rumit."
+
+---
+
+---
+
+## C. Pertanyaan "Jebakan" (Trick Questions)
+
+_Tip: Pertanyaan ini menguji kejujuran dan pemahaman batasan riset._
+
+### Q14: "Apa kelemahan terbesar dari sistem baru ini?"
+
+**Jawaban Strategis:**
+(Jujur tapi solutif)
+"Kelemahannya ada di **Learning Curve** (kurva belajar) tim baru. Arsitektur Atomic Design dan React Query butuh pemahaman konsep yang lebih dalam dibanding kodingan 'spaghetti' biasa.
+Namun, ini saya mitigasi dengan membuat dokumentasi folder structure dan standardisasi kode (ESLint/Prettier) agar developer baru dipaksa mengikuti standar yang benar."
+
+### Q15: "Kodingan ini kamu tulis sendiri semua atau copy-paste dari tutorial/AI?"
+
+**Jawaban Strategis:**
+"Saya menggunakan referensi best practice dari dokumentasi resmi Next.js dan TanStack, serta menggunakan AI (seperti Github Copilot) sebagai **asisten coding** untuk mempercepat penulisan boilerplate.
+Namun, **keputusan arsitektur** (pemilihan Atomic Design, strategi caching, pemisahan Server/Client state) adalah murni hasil analisis saya terhadap kebutuhan TVKU."
+
+### Q16: "Kalau server backend mati, frontend-mu bisa apa?"
+
+**Jawaban Strategis:**
+"Sistem ini memiliki **Graceful Degradation**.
+Berkat React Query, jika server mati, aplikasi akan menampilkan data terakhir yang ada di _cache_ (stale data) sambil mencoba reconnecting, atau menampilkan UI _Skeleton Loading_ yang rapi. User tidak akan melihat layar putih blank (White Screen of Death)."
+
+---
+
+## D. Pertanyaan Definisi & Istilah (Kamus Teknis)
+
+_Tip: Dosen sering nanya istilah dasar untuk ngetes apakah Anda sekedar hafal atau paham konsepnya._
+
+### Q17: "LCP itu makanan apa? Coba jelaskan bahasa manusia."
+
+**Jawaban Strategis:**
+"**LCP (Largest Contentful Paint)** adalah waktu yang dibutuhkan sampai **konten terbesar** (biasanya gambar utama atau judul) muncul di layar.
+Simpelnya: 'Seberapa cepat user bisa melihat isi utama website?'.
+Kalau LCP lama, user akan merasa website rusak/lemot."
+
+### Q18: "CLS itu apa? Kenapa harus rendah?"
+
+**Jawaban Strategis:**
+"**CLS (Cumulative Layout Shift)** adalah skor kestabilan visual.
+Simpelnya: 'Apakah layoutnya goyang-goyang saat loading?'.
+Pernah nggak Bapak/Ibu mau klik tombol 'Berita', tiba-tiba bergeser dan malah kepencet 'Iklan'? Itu karena CLS-nya buruk. Saya perbaiki ini agar user tidak salah klik."
+
+### Q19: "TBT itu apa?"
+
+**Jawaban Strategis:**
+"**TBT (Total Blocking Time)** adalah waktu dimana layar macet tidak bisa diklik karena browser sibuk memproses kode.
+Simpelnya: 'Seberapa cepat website bisa diajak interaksi?'. Kalau TBT tinggi, diklik nggak respon-respon."
+
+### Q20: "Apa bedanya Library dan Framework? (React vs Next.js)"
+
+**Jawaban Strategis:**
+"**Library (React)** itu seperti kita beli bahan bangunan (batu bata, semen). Kita bebas mau bangun rumah bentuk apa saja, tapi harus racik sendiri.
+**Framework (Next.js)** itu seperti beli rumah perumahan. Fondasi, atap, saluran air (routing, SSR) sudah disiapkan. Kita tinggal isi perabotnya. Makanya development jadi jauh lebih cepat."
+
+### Q21: "API itu apa sih?"
+
+**Jawaban Strategis:**
+"**API (Application Programming Interface)** itu seperti **Pelayan Restoran**.
+Frontend (User) tidak boleh masuk ke Dapur (Database) langsung.
+Frontend pesan data ke Pelayan (API), Pelayan ambil ke Dapur, lalu antar makanannya ke Meja (Layar User).
+Jadi API adalah jembatan komunikasi yang aman antara tampilan dan data."
+
+---
+
+## E. Pertanyaan "Out of Context" / Wawasan Luas
+
+_Tip: Ini pertanyaan santai tapi mematikan. Dosen ingin tahu wawasan & kematangan Anda sebagai calon sarjana._
+
+### Q22: "Habis lulus mau ngapain? Ilmu ini kepakai nggak?"
+
+**Jawaban Strategis:**
+"Rencana saya berkarir sebagai **Frontend Engineer** atau **Fullstack Developer**.
+Riset ini adalah simulasi kerja profesional saya. Skill _State Management_, _Performance Tuning_, dan _Clean Architecture_ yang saya terapkan di sini adalah skill yang paling dicari industri saat ini. Jadi ini bukan sekedar syarat lulus, tapi portofolio utama saya."
+
+### Q23: "Di era AI (ChatGPT/Claude) begini, programmer masih butuh nggak sih? Kan AI bisa coding sendiri."
+
+**Jawaban Strategis:**
+"AI memang bisa menulis kode (coding), tapi belum bisa **merancang sistem** (architecting) dan memahami **konteks bisnis** (business value) sebaik manusia.
+Di riset ini, AI membantu saya mengetik, tapi keputusan untuk memisahkan _Server State_ agar aplikasi tidak lemot, atau memilih _Atomic Design_ agar mudah dimaintain, adalah keputusan strategis manusia. Jadi programmer berevolusi menjadi 'Arsitek Solusi' yang dibantu AI."
+
+### Q24: "Kalau website ini di-hack, siapa yang tanggung jawab? Keamanannya gimana?"
+
+**Jawaban Strategis:**
+"Secara keamanan, Next.js sudah memiliki proteksi bawaan terhadap XSS (Cross Site Scripting).
+Namun, keamanan adalah tanggung jawab bersama. Di sisi Frontend, saya memastikan validasi input yang ketat dan tidak mengekspos _Secret Key_ di kode klien (browser). Untuk keamanan data user, itu akan ditangani lebih lanjut di sisi Backend/API."
+
+### Q25: "Apa tantangan terberatmu selama mengerjakan skripsi ini? (Selain kode error)"
+
+**Jawaban Strategis:**
+(Jawab soft skill)
+"Tantangan terberat adalah **Disiplin Konsistensi** dan **Pengambilan Keputusan**.
+Seringkali saya tergoda menambahkan fitur keren tapi tidak penting (Over-engineering). Saya belajar untuk mengerem diri, kembali ke tujuan utama skripsi (Refactoring & Performa), dan membuang fitur yang tidak relevan dengan tenggat waktu. Itu pelajaran manajemen proyek yang berharga."
+
+---
+
+## F. Tips Tambahan Saat Sidang
+
+1.  **Jangan Debat Defensive:** Kalau dosen kritik, terima dulu. "Masukan yang sangat bagus Pak, memang di sisi X masih bisa dioptimalkan, namun fokus riset ini ada di Y..."
+2.  **Fokus ke Slide 10:** Jika pembicaraan melebar kemana-mana, tarik kembali ke **Slide 10**. Itu adalah "Kartu As" Anda. Data tidak bisah dibantah.
+3.  **Demonstrasi:** Jika diminta demo, tunjukkan perpindahan halaman yang mulus dan loading yang cepat. Itu bukti paling nyata.

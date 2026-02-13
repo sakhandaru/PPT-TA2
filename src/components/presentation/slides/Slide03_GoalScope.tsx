@@ -42,77 +42,50 @@ export default function Slide03_GoalScope() {
             <ul className="space-y-4 flex-1">
               <li className="flex items-start">
                 <CheckCircle2 className="w-5 h-5 text-blue-500 mt-1 mr-3 shrink-0" />
-                <span className="text-sm">
-                  Membangun sistem yang mandiri tanpa ketergantungan teknologi
-                  pihak ketiga yang usang (<strong>jQuery</strong>).
+                <span className="text-base md:text-lg">
+                  Membangun sistem yang <strong>Mandiri & Modern</strong> <br />
+                  <span className="text-base text-muted-foreground font-normal">
+                    (Tidak bergantung teknologi lama yang usang).
+                  </span>
                 </span>
               </li>
               <li className="flex items-start">
                 <CheckCircle2 className="w-5 h-5 text-blue-500 mt-1 mr-3 shrink-0" />
-                <span className="text-sm">
-                  Memastikan penyajian berita dan live streaming selalu aktual
-                  melalui <strong>sinkronisasi data otomatis</strong>.
+                <span className="text-base md:text-lg">
+                  Mempermudah <strong>Pengembangan Fitur Baru</strong> <br />
+                  <span className="text-base text-muted-foreground font-normal">
+                    (Struktur kode lebih rapi dan mudah dirawat).
+                  </span>
                 </span>
               </li>
               <li className="flex items-start">
                 <CheckCircle2 className="w-5 h-5 text-blue-500 mt-1 mr-3 shrink-0" />
-                <span className="text-sm">
-                  Menyederhanakan pemeliharaan sistem sehingga penambahan fitur
-                  di masa depan menjadi <strong>lebih cepat dan efisien</strong>
-                  .
+                <span className="text-base md:text-lg">
+                  Memastikan <strong>Akses Website Cepat</strong> <br />
+                  <span className="text-base text-muted-foreground font-normal">
+                    (Lebih ringan dan responsif bagi pengguna).
+                  </span>
                 </span>
               </li>
               <li className="flex items-start">
                 <CheckCircle2 className="w-5 h-5 text-blue-500 mt-1 mr-3 shrink-0" />
-                <span className="text-sm">
-                  Mencapai standar kualitas web internasional (
-                  <strong>Core Web Vitals</strong>) untuk meningkatkan daya
-                  saing media.
+                <span className="text-base md:text-lg">
+                  Efisiensi <strong>Desain Tampilan</strong> <br />
+                  <span className="text-base text-muted-foreground font-normal">
+                    (Penataan gaya (CSS) yang lebih praktis).
+                  </span>
+                </span>
+              </li>
+              <li className="flex items-start">
+                <CheckCircle2 className="w-5 h-5 text-blue-500 mt-1 mr-3 shrink-0" />
+                <span className="text-base md:text-lg">
+                  Memberikan <strong>Rekomendasi Terbaik</strong> <br />
+                  <span className="text-base text-muted-foreground font-normal">
+                    (Panduan standar modern untuk website media).
+                  </span>
                 </span>
               </li>
             </ul>
-
-            {/* Tech Stack Visuals */}
-            {/* Tech Stack Visuals */}
-            {/* <div className="mt-6 pt-6 border-t border-border/50">
-              <p className="text-xs font-semibold text-muted-foreground mb-4 uppercase tracking-wider">
-                Teknologi Solusi
-              </p>
-              <div className="flex flex-wrap items-center gap-6 grayscale hover:grayscale-0 transition-all duration-500">
-                <div className="relative h-6 w-20">
-                  <Image
-                    src="/nextjs-logo.svg"
-                    alt="Next.js"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="relative h-8 w-8">
-                  <Image
-                    src="/react-query-logo.svg"
-                    alt="React Query"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="relative h-8 w-8">
-                  <Image
-                    src="/zustand-logo.png"
-                    alt="Zustand"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div className="relative h-6 w-24">
-                  <Image
-                    src="/tailwind-logo.svg"
-                    alt="Tailwind CSS"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-            </div> */}
           </div>
         </motion.div>
 
@@ -131,30 +104,36 @@ export default function Slide03_GoalScope() {
             <ul className="space-y-4">
               <li className="flex items-start">
                 <ArrowRight className="w-5 h-5 text-orange-500 mt-1 mr-3 shrink-0" />
-                <span className="text-sm">
-                  Berfokus pada <strong>Client-side</strong> aplikasi TVKU
-                  (tidak mencakup server/API).
+                <span className="text-base md:text-lg">
+                  Fokus pada <strong>Client-side</strong> (Tidak mencakup
+                  Server/API).
                 </span>
               </li>
               <li className="flex items-start">
                 <ArrowRight className="w-5 h-5 text-orange-500 mt-1 mr-3 shrink-0" />
-                <span className="text-sm">
-                  Refaktorisasi meliputi: pemisahan state, penghapusan{" "}
-                  <strong>jQuery</strong>, dan perombakan struktur folder.
+                <span className="text-base md:text-lg">
+                  Refactor: Hapus jQuery, Struktur Modular, Split State,
+                  Tailwind, React Query + Zustand.
                 </span>
               </li>
               <li className="flex items-start">
                 <ArrowRight className="w-5 h-5 text-orange-500 mt-1 mr-3 shrink-0" />
-                <span className="text-sm">
-                  Pengukuran performa menggunakan <strong>Lighthouse</strong>{" "}
-                  dan <strong>Core Web Vitals</strong>.
+                <span className="text-base md:text-lg">
+                  Tidak membahas fitur <strong>Admin</strong>.
                 </span>
               </li>
               <li className="flex items-start">
-                <CircleOff className="w-5 h-5 text-orange-500 mt-1 mr-3 shrink-0" />
-                <span className="text-sm text-muted-foreground">
-                  Tidak mencakup pengembangan fitur pada hak akses administratif
-                  (admin).
+                <ArrowRight className="w-5 h-5 text-orange-500 mt-1 mr-3 shrink-0" />
+                <span className="text-base md:text-lg">
+                  Metrik: <strong>Core Web Vitals</strong> via
+                  Lighthouse.
+                </span>
+              </li>
+              <li className="flex items-start">
+                <ArrowRight className="w-5 h-5 text-orange-500 mt-1 mr-3 shrink-0" />
+                <span className="text-base md:text-lg">
+                  Fokus <strong>Maintainability</strong>: Code Clean-up,
+                  Modularization, Dependency Removal.
                 </span>
               </li>
             </ul>

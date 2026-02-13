@@ -49,7 +49,7 @@ export default function Slide01_Cover() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight uppercase font-display"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight uppercase font-display"
           >
             Penerapan Refaktorisasi
             <br />
@@ -101,13 +101,13 @@ export default function Slide01_Cover() {
             </div>
 
             <div className="space-y-1">
-              <p className="text-zinc-500 text-[10px] uppercase tracking-wider">
+              <p className="text-zinc-500 text-xs uppercase tracking-wider">
                 Mahasiswa
               </p>
-              <p className="text-lg font-bold text-zinc-900 dark:text-white">
+              <p className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-white">
                 Rifqis Sakha Hilmi Aziz
               </p>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400 font-mono">
+              <p className="text-base text-zinc-600 dark:text-zinc-400 font-mono">
                 A11.2022.14254
               </p>
             </div>
@@ -121,33 +121,39 @@ export default function Slide01_Cover() {
             className="grid grid-cols-1 gap-4"
           >
             <div className="border border-zinc-200 dark:border-zinc-800/50 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/30">
-              <p className="text-zinc-500 text-[10px] uppercase tracking-wider mb-1">
+              <p className="text-zinc-500 text-xs uppercase tracking-wider mb-1">
                 Pembimbing
               </p>
-              <p className="text-sm font-semibold text-zinc-700 dark:text-zinc-200">
+              <p className="text-base font-bold text-zinc-700 dark:text-zinc-200">
                 Gustina Alfa Trisnapradika, M.Kom
               </p>
             </div>
             <div className="border border-zinc-200 dark:border-zinc-800/50 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-900/30">
-              <p className="text-zinc-500 text-[10px] uppercase tracking-wider mb-3">
+              <p className="text-zinc-500 text-xs uppercase tracking-wider mb-3">
                 Dewan Penguji
               </p>
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div>
-                  <p className="text-[10px] text-zinc-400 mb-0.5">Ketua</p>
-                  <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+                  <p className="text-xs text-zinc-400 mb-0.5 uppercase tracking-wider">
+                    Ketua
+                  </p>
+                  <p className="text-base font-bold text-zinc-700 dark:text-zinc-200">
                     Fauzi Adi Rafrastara, M.Cs
                   </p>
                 </div>
                 <div>
-                  <p className="text-[10px] text-zinc-400 mb-0.5">Anggota 1</p>
-                  <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+                  <p className="text-xs text-zinc-400 mb-0.5 uppercase tracking-wider">
+                    Anggota 1
+                  </p>
+                  <p className="text-base font-bold text-zinc-700 dark:text-zinc-200">
                     Christy Atika Sari, M.Kom
                   </p>
                 </div>
                 <div>
-                  <p className="text-[10px] text-zinc-400 mb-0.5">Anggota 2</p>
-                  <p className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+                  <p className="text-xs text-zinc-400 mb-0.5 uppercase tracking-wider">
+                    Anggota 2
+                  </p>
+                  <p className="text-base font-bold text-zinc-700 dark:text-zinc-200">
                     Harun Al Azies, S.Stat., M.Stat.
                   </p>
                 </div>

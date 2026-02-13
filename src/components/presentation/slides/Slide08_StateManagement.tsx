@@ -40,7 +40,7 @@ export default function Slide08_StateManagement() {
           <div className="absolute inset-0 bg-grid-slate-200/50 dark:bg-grid-slate-800/20 [mask-image:linear-gradient(to_bottom,white,transparent)] pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center justify-center h-full gap-4">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4">
+            <h3 className="text-lg font-bold uppercase tracking-widest text-muted-foreground mb-4">
               Data Flow Architecture
             </h3>
 
@@ -165,12 +165,12 @@ function StateManagementIllustration() {
 
 function ServerNode() {
   return (
-    <div className="flex flex-col items-center gap-2 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-700 shadow-sm relative w-24">
-      <div className="absolute -top-2 px-2 py-0.5 bg-slate-600 text-white text-[9px] rounded-full font-bold">
+    <div className="flex flex-col items-center gap-2 p-3 bg-slate-100 dark:bg-slate-800 rounded-xl border border-slate-300 dark:border-slate-700 shadow-sm relative w-32">
+      <div className="absolute -top-3 px-2 py-0.5 bg-slate-600 text-white text-[10px] rounded-full font-bold">
         API
       </div>
       <Server className="w-6 h-6 text-slate-600 dark:text-slate-400" />
-      <span className="text-[10px] font-bold text-slate-600 dark:text-slate-400">
+      <span className="text-sm font-bold text-slate-600 dark:text-slate-400">
         Server
       </span>
     </div>
@@ -180,7 +180,7 @@ function ServerNode() {
 function QueryNode() {
   return (
     <motion.div
-      className="flex flex-col items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800 shadow-sm relative w-24"
+      className="flex flex-col items-center gap-2 p-3 bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800 shadow-sm relative w-32"
       animate={{
         boxShadow: [
           "0 0 0px rgba(239, 68, 68, 0)",
@@ -190,11 +190,11 @@ function QueryNode() {
       }}
       transition={{ duration: 2, repeat: Infinity }}
     >
-      <div className="absolute -top-2 px-2 py-0.5 bg-red-500 text-white text-[9px] rounded-full font-bold shadow-sm">
+      <div className="absolute -top-3 px-2 py-0.5 bg-red-500 text-white text-[10px] rounded-full font-bold shadow-sm">
         Cache
       </div>
       <Server className="w-6 h-6 text-red-500" />
-      <span className="text-[10px] font-bold text-red-600 dark:text-red-400">
+      <span className="text-sm font-bold text-red-600 dark:text-red-400">
         React Query
       </span>
     </motion.div>
@@ -204,15 +204,15 @@ function QueryNode() {
 function ZustandNode() {
   return (
     <motion.div
-      className="flex flex-col items-center gap-2 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl border border-yellow-200 dark:border-yellow-800 shadow-sm relative w-24"
+      className="flex flex-col items-center gap-2 p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl border border-yellow-200 dark:border-yellow-800 shadow-sm relative w-32"
       animate={{ y: [0, -2, 0] }}
       transition={{ duration: 3, repeat: Infinity }}
     >
-      <div className="absolute -top-2 px-2 py-0.5 bg-yellow-500 text-white text-[9px] rounded-full font-bold shadow-sm">
+      <div className="absolute -top-3 px-2 py-0.5 bg-yellow-500 text-white text-[10px] rounded-full font-bold shadow-sm">
         Store
       </div>
       <MonitorSmartphone className="w-6 h-6 text-yellow-500" />
-      <span className="text-[10px] font-bold text-yellow-600 dark:text-yellow-400">
+      <span className="text-sm font-bold text-yellow-600 dark:text-yellow-400">
         Zustand
       </span>
     </motion.div>
@@ -221,12 +221,12 @@ function ZustandNode() {
 
 function UINode() {
   return (
-    <div className="flex flex-col items-center gap-2 p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-200 dark:border-indigo-800 shadow-sm relative w-24">
-      <div className="absolute -top-2 px-2 py-0.5 bg-indigo-500 text-white text-[9px] rounded-full font-bold shadow-sm">
+    <div className="flex flex-col items-center gap-2 p-3 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-200 dark:border-indigo-800 shadow-sm relative w-32">
+      <div className="absolute -top-3 px-2 py-0.5 bg-indigo-500 text-white text-[10px] rounded-full font-bold shadow-sm">
         View
       </div>
       <CheckCircle2 className="w-6 h-6 text-indigo-500" />
-      <span className="text-[10px] font-bold text-indigo-600 dark:text-indigo-400">
+      <span className="text-sm font-bold text-indigo-600 dark:text-indigo-400">
         Component
       </span>
     </div>
@@ -279,8 +279,8 @@ function FeatureItem({
 function ReasonItem({ title, desc }: { title: string; desc: string }) {
   return (
     <li className="flex flex-col gap-0.5 p-2 rounded hover:bg-muted/50 transition-colors">
-      <span className="text-xs font-bold text-foreground">{title}</span>
-      <span className="text-[10px] text-muted-foreground leading-tight">
+      <span className="text-base font-bold text-foreground">{title}</span>
+      <span className="text-sm text-muted-foreground leading-tight">
         {desc}
       </span>
     </li>

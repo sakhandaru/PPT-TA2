@@ -110,7 +110,7 @@ export default function Slide07_Refactoring() {
               </div>
               <h3 className="font-bold text-base">Restrukturisasi Proyek</h3>
             </div>
-            <ul className="space-y-2 text-xs text-muted-foreground ml-1">
+            <ul className="space-y-3 text-sm md:text-base text-muted-foreground ml-1">
               <li className="flex items-start gap-2">
                 <ArrowRight className="w-3 h-3 mt-0.5 text-blue-400 shrink-0" />
                 <span>
@@ -132,22 +132,22 @@ export default function Slide07_Refactoring() {
               <h3 className="font-bold">Modularisasi Komponen</h3>
             </div>
 
-            <div className="grid grid-cols-1 gap-2 mt-2">
-              <div className="p-2 bg-red-50/50 dark:bg-red-900/10 rounded border border-red-100 dark:border-red-900/30">
-                <h5 className="text-[10px] font-bold text-red-600 dark:text-red-400 uppercase mb-0.5">
-                  Old System
-                </h5>
-                <p className="text-[10px] text-muted-foreground">
-                  Script jQuery global & logic UI tercampur (Hard to Debug).
-                </p>
-              </div>
-              <div className="p-2 bg-emerald-50/50 dark:bg-emerald-900/10 rounded border border-emerald-100 dark:border-emerald-900/30">
-                <h5 className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase mb-0.5">
-                  New System
-                </h5>
-                <p className="text-[10px] text-muted-foreground">
-                  Pemisahan <code>/ui</code>, <code>/features</code>, dan{" "}
-                  <code>/hooks</code> (Reusable).
+            <div className="mt-4">
+              <div className="p-4 bg-emerald-50/50 dark:bg-emerald-900/10 rounded-xl border border-emerald-100 dark:border-emerald-900/30 shadow-sm">
+                <p className="text-sm md:text-base font-semibold text-emerald-900 dark:text-emerald-100 leading-relaxed">
+                  Pemisahan
+                  <code className="px-1 py-0.5 mx-1 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300">
+                    /ui
+                  </code>
+                  ,
+                  <code className="px-1 py-0.5 mx-1 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300">
+                    /features
+                  </code>
+                  , dan
+                  <code className="px-1 py-0.5 mx-1 bg-white/50 dark:bg-black/20 rounded border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300">
+                    /hooks
+                  </code>
+                  (Reusable).
                 </p>
               </div>
             </div>
@@ -160,9 +160,10 @@ export default function Slide07_Refactoring() {
               </div>
               <h3 className="font-bold">Dampak Internal</h3>
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Eliminasi <strong>technical debt</strong> signifikan. Sehingga kode lebih
-              bersih, terprediksi, dan mudah dikelola karena dependensi antar berkas menjadi teratur.
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+              Eliminasi <strong>technical debt</strong> signifikan. Sehingga
+              kode lebih bersih, terprediksi, dan mudah dikelola karena
+              dependensi antar berkas menjadi teratur.
             </p>
           </div>
         </div>

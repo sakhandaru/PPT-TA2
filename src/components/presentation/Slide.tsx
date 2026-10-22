@@ -19,18 +19,6 @@ export interface SlideProps {
   className?: string;
 }
 
-const variants = {
-  initial: { opacity: 0, x: 50 },
-  animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -50 },
-};
-
-const transition = {
-  type: "spring",
-  stiffness: 260,
-  damping: 20,
-} as const;
-
 export function Slide({
   title,
   subtitle,
@@ -39,12 +27,7 @@ export function Slide({
   className,
 }: SlideProps) {
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      variants={variants}
-      transition={transition}
+    <div
       className={cn(
         "flex h-full w-full flex-col p-12 md:p-24 overflow-hidden",
         className,
@@ -97,6 +80,6 @@ export function Slide({
           </motion.div>
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }

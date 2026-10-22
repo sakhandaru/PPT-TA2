@@ -1,23 +1,74 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import SlideNavigation from "./SlideNavigation";
+
+const slideVariants = {
+  enter: (direction: number) => ({
+    opacity: 0,
+    x: direction > 0 ? 72 : -72,
+    scale: 0.985,
+  }),
+  center: { opacity: 1, x: 0, scale: 1 },
+  exit: (direction: number) => ({
+    opacity: 0,
+    x: direction > 0 ? -72 : 72,
+    scale: 0.985,
+  }),
+};
+
+const reducedMotionVariants = {
+  enter: { opacity: 0 },
+  center: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+const pageNumberVariants = {
+  enter: (direction: number) => ({ opacity: 0, y: direction * 16 }),
+  center: { opacity: 1, y: 0 },
+  exit: (direction: number) => ({ opacity: 0, y: direction * -16 }),
+};
 
 interface SlideContainerProps {
   slides: React.ReactNode[];
   slideTitles?: string[];
+  activeDeckId?: string;
+  onHome: () => void;
 }
 
-export function SlideContainer({ slides, slideTitles }: SlideContainerProps) {
-  const [currentSlide, setCurrentSlide] = useState(0);
+export function SlideContainer({
+  slides,
+  slideTitles,
+  activeDeckId,
+  onHome,
+}: SlideContainerProps) {
+  const [navigation, setNavigation] = useState({ index: 0, direction: 1 });
+  const currentSlide = navigation.index;
+  const prefersReducedMotion = useReducedMotion();
 
   const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1 < slides.length ? prev + 1 : prev));
+    setNavigation((previous) =>
+      previous.index + 1 < slides.length
+        ? { index: previous.index + 1, direction: 1 }
+        : previous,
+    );
   }, [slides.length]);
 
   const prevSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev - 1 >= 0 ? prev - 1 : prev));
+    setNavigation((previous) =>
+      previous.index > 0
+        ? { index: previous.index - 1, direction: -1 }
+        : previous,
+    );
+  }, []);
+
+  const goToSlide = useCallback((index: number) => {
+    setNavigation((previous) =>
+      index === previous.index
+        ? previous
+        : { index, direction: index > previous.index ? 1 : -1 },
+    );
   }, []);
 
   useEffect(() => {
@@ -50,6 +101,11 @@ export function SlideContainer({ slides, slideTitles }: SlideContainerProps) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
+    setNavigation({ index: 0, direction: 1 });
+    setIsGridOpen(false);
+  }, [activeDeckId]);
+
+  useEffect(() => {
     // Check system preference on load
     if (
       window.matchMedia &&
@@ -74,10 +130,23 @@ export function SlideContainer({ slides, slideTitles }: SlideContainerProps) {
     <div className="relative h-screen w-full bg-background overflow-hidden flex flex-col">
       {/* Slide Area */}
       <div className="flex-1 relative">
-        <AnimatePresence mode="wait">
-          <div key={currentSlide} className="h-full w-full absolute inset-0">
+        <AnimatePresence initial={false} custom={navigation.direction} mode="sync">
+          <motion.div
+            key={`${activeDeckId}-${currentSlide}`}
+            custom={navigation.direction}
+            variants={prefersReducedMotion ? reducedMotionVariants : slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={
+              prefersReducedMotion
+                ? { duration: 0.15 }
+                : { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+            }
+            className="h-full w-full absolute inset-0"
+          >
             {slides[currentSlide]}
-          </div>
+          </motion.div>
         </AnimatePresence>
 
         {/* Grid Navigation Overlay */}
@@ -108,18 +177,24 @@ export function SlideContainer({ slides, slideTitles }: SlideContainerProps) {
                     <button
                       key={index}
                       onClick={() => {
-                        setCurrentSlide(index);
+                        goToSlide(index);
                         setIsGridOpen(false);
                       }}
-                      className={`group relative h-24 p-3 rounded-md border text-left transition-all duration-200 ${
+                      className={`group relative h-32 overflow-hidden rounded-md border text-left transition-all duration-200 ${
                         currentSlide === index
                           ? "bg-white/10 border-white/40 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
                           : "bg-transparent border-white/5 hover:bg-white/5 hover:border-white/20"
                       }`}
                     >
+                      <div className="pointer-events-none absolute inset-0 overflow-hidden opacity-50 transition-opacity group-hover:opacity-75">
+                        <div className="h-[500%] w-[500%] origin-top-left scale-[0.2]">
+                          {slides[index]}
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-zinc-950/10" />
+                      </div>
                       <div className="flex flex-col justify-between h-full">
                         <span
-                          className={`text-[10px] font-mono ${
+                          className={`relative z-10 text-[10px] font-mono ${
                             currentSlide === index
                               ? "text-white"
                               : "text-zinc-600 group-hover:text-zinc-400"
@@ -128,7 +203,7 @@ export function SlideContainer({ slides, slideTitles }: SlideContainerProps) {
                           {index + 1 < 10 ? `0${index + 1}` : index + 1}
                         </span>
                         <span
-                          className={`font-mono text-xs leading-tight line-clamp-3 ${
+                          className={`relative z-10 font-mono text-xs leading-tight line-clamp-3 ${
                             currentSlide === index
                               ? "text-white font-semibold"
                               : "text-zinc-400 group-hover:text-zinc-200"
@@ -168,12 +243,14 @@ export function SlideContainer({ slides, slideTitles }: SlideContainerProps) {
                 : "text-6xl opacity-50 dark:opacity-80"
             }`}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={navigation.direction}>
               <motion.span
                 key={currentSlide}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
+                custom={navigation.direction}
+                variants={pageNumberVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
                 transition={{ duration: 0.3 }}
                 className="block"
               >
@@ -197,7 +274,7 @@ export function SlideContainer({ slides, slideTitles }: SlideContainerProps) {
                 />
               </div>
               <p className="text-[10px] text-zinc-400 dark:text-zinc-600 uppercase tracking-widest mt-2 mix-blend-difference dark:mix-blend-normal">
-                Dian Nuswantoro University
+                {activeDeckId === "ojt" ? "Universitas Dian Nuswantoro" : "Dian Nuswantoro University"}
               </p>
             </div>
           )}
@@ -210,6 +287,7 @@ export function SlideContainer({ slides, slideTitles }: SlideContainerProps) {
         totalSlides={slides.length}
         onNext={nextSlide}
         onPrev={prevSlide}
+        onHome={onHome}
         onToggleGrid={() => setIsGridOpen(!isGridOpen)}
         onToggleTheme={toggleTheme}
         theme={theme}

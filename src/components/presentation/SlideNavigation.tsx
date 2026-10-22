@@ -8,6 +8,7 @@ interface SlideNavigationProps {
   totalSlides: number;
   onNext: () => void;
   onPrev: () => void;
+  onHome: () => void;
   onToggleGrid: () => void;
   onToggleTheme: () => void;
   theme: "dark" | "light";
@@ -18,6 +19,7 @@ export default function SlideNavigation({
   totalSlides,
   onNext,
   onPrev,
+  onHome,
   onToggleGrid,
   onToggleTheme,
   theme,
@@ -40,6 +42,13 @@ export default function SlideNavigation({
           {currentSlide + 1} / {totalSlides}
         </div>
         <div className="flex items-center gap-4">
+          <button
+            onClick={onHome}
+            className="text-xs text-zinc-500 underline underline-offset-4 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white"
+          >
+            Home
+          </button>
+          <span className="text-zinc-300 dark:text-zinc-700">|</span>
           <button
             onClick={onToggleGrid}
             className="text-xs text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white underline underline-offset-4"

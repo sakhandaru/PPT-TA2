@@ -97,7 +97,7 @@ export function OjtLearningSlide() {
               animate={{ opacity: 1, y: 0 }}
               exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
               transition={{ duration: 0.25 }}
-              className="grid min-h-28 gap-4 border-t border-zinc-200 pt-6 sm:grid-cols-[8rem_1fr] dark:border-zinc-800"
+              className="grid min-h-28 gap-4 border-t border-zinc-200 pt-6 sm:grid-cols-[8rem_1fr] lg:pl-[12%] dark:border-zinc-800"
             >
               <div>
                 <span className="font-mono text-sm text-yellow-700 dark:text-yellow-300">0{activeLesson + 1} / 03</span>
